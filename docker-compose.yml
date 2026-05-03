@@ -1,0 +1,182 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Daily Health Tracker -- Docker Compose
+# Orchestrates all services: PostgreSQL, Redis, RabbitMQ, Backend API,
+# Suggestion Worker, Frontend (static), and Nginx reverse proxy.
+# ─────────────────────────────────────────────────────────────────────────────
+
+services:
+
+  # ── PostgreSQL ────────────────────────────────────────────────────────────
+  # Primary relational database for users, health logs, suggestions, and chat
+  # messages. Uses the official PostgreSQL 16 image.
+  postgres:
+    image: postgres:16-alpine
+    container_name: healthtracker-postgres
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./scripts/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql:ro
+    environment:
+      POSTGRES_DB: healthtracker
+      POSTGRES_USER: ${DB_USER:-healthuser}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-healthpass}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-healthuser} -d healthtracker"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    networks:
+      - health-network
+
+  # ── Redis ─────────────────────────────────────────────────────────────────
+  # In-memory cache for session data, rate limiting counters, conversation
+  # context, and pre-computed suggestions. AOF persistence is enabled.
+  redis:
+    image: redis:7-alpine
+    container_name: healthtracker-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+      start_period: 5s
+    networks:
+      - health-network
+
+  # ── RabbitMQ ──────────────────────────────────────────────────────────────
+  # Message broker for async task dispatch. The suggestion worker consumes
+  # messages from queues declared on this broker. Management UI available
+  # on port 15672.
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: healthtracker-rabbitmq
+    restart: unless-stopped
+    ports:
+      - "5672:5672"   # AMQP protocol
+      - "15672:15672" # Management HTTP UI
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER:-guest}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASS:-guest}
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+    networks:
+      - health-network
+
+  # ── Backend API ───────────────────────────────────────────────────────────
+  # FastAPI application served by Uvicorn. Handles all REST API requests for
+  # auth, health logs, chatbot, and suggestions. Waits for Postgres, Redis,
+  # and RabbitMQ to report healthy before starting.
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: healthtracker-backend
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    # Run database migrations (alembic) on startup, then start the ASGI server
+    command: >
+      sh -c "alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port 8000 --workers 4"
+    networks:
+      - health-network
+
+  # ── Suggestion Worker ─────────────────────────────────────────────────────
+  # Background worker that consumes RabbitMQ messages to generate proactive
+  # health suggestions via the DeepSeek API. Shares the same Docker image as
+  # the backend but runs a different Python entrypoint.
+  suggestion-worker:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: healthtracker-suggestion-worker
+    restart: unless-stopped
+    env_file:
+      - .env
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    # Run the async RabbitMQ consumer (listens for suggestion generation tasks)
+    command: python -m app.suggestions.worker
+    networks:
+      - health-network
+
+  # ── Frontend ──────────────────────────────────────────────────────────────
+  # Statically built React + Vite SPA served by Nginx. Built in a multi-stage
+  # Dockerfile: Node.js for compilation, then the output is copied into an
+  # Nginx Alpine image for production serving.
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: healthtracker-frontend
+    restart: unless-stopped
+    ports:
+      - "80"
+    depends_on:
+      - backend
+    networks:
+      - health-network
+
+  # ── Nginx Reverse Proxy ───────────────────────────────────────────────────
+  # Single entry point for all HTTP traffic. Routes /api/* requests to the
+  # backend FastAPI service and all other requests to the frontend static
+  # files. Handles CORS, SSE buffering controls, and SPA fallback routing.
+  nginx:
+    image: nginx:alpine
+    container_name: healthtracker-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - ./frontend/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - backend
+      - frontend
+    networks:
+      - health-network
+
+# ── Networks ────────────────────────────────────────────────────────────────
+# Isolated bridge network for inter-service communication. All containers
+# join this network and can reach each other by service name.
+networks:
+  health-network:
+    driver: bridge
+
+# ── Volumes ─────────────────────────────────────────────────────────────────
+# Persistent data storage for stateful services. Data survives container
+# restarts and recreations.
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+  rabbitmq_data:
+    driver: local
