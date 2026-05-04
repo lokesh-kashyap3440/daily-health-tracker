@@ -38,7 +38,12 @@ export function useLogout() {
   const navigate = useNavigate();
 
   return () => {
-    api.post('/auth/logout').catch(() => {});
+    const refreshToken = localStorage.getItem('refresh_token');
+    if (refreshToken) {
+      api.post('/auth/logout', { refresh_token: refreshToken }).catch(() => {});
+    }
+    sessionStorage.removeItem('access_token');
+    localStorage.removeItem('refresh_token');
     logout();
     navigate('/login');
   };

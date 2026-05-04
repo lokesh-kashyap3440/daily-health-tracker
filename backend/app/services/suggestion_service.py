@@ -64,14 +64,25 @@ class SuggestionService:
 
     async def get_today_suggestion(self, user_id: UUID) -> Optional[DailySuggestion]:
         today = date.today()
-
-        # Check Redis cache first
         cache_key = f"user:{user_id}:suggestion:today"
-        cached = await self.redis.get_json(cache_key)
-        if cached:
-            return cached
 
-        # Check DB
+        # Check Redis cache first — if present and not dismissed, fetch from DB
+        cached = await self.redis.get_json(cache_key)
+        if cached and not cached.get("is_dismissed"):
+            result = await self.db.execute(
+                select(DailySuggestion)
+                .where(
+                    DailySuggestion.user_id == user_id,
+                    DailySuggestion.suggestion_date == today,
+                )
+                .order_by(DailySuggestion.created_at.desc())
+                .limit(1)
+            )
+            suggestion = result.scalars().first()
+            if suggestion:
+                return suggestion
+
+        # No cache hit — query DB directly
         result = await self.db.execute(
             select(DailySuggestion)
             .where(
@@ -83,7 +94,6 @@ class SuggestionService:
         )
         suggestion = result.scalars().first()
 
-        # Cache if found
         if suggestion:
             await self._cache_suggestion(user_id, suggestion)
 
@@ -107,11 +117,12 @@ class SuggestionService:
         result = await self.db.execute(query)
         return list(result.scalars().all())
 
-    async def generate_suggestion(self, user_id: UUID) -> DailySuggestion:
-        # Check if already generated today
-        existing = await self.get_today_suggestion(user_id)
-        if existing and not existing.is_dismissed:
-            return existing
+    async def generate_suggestion(self, user_id: UUID, force: bool = False) -> DailySuggestion:
+        # Check if already generated today (skip when force=True, e.g. on refresh)
+        if not force:
+            existing = await self.get_today_suggestion(user_id)
+            if existing and not existing.is_dismissed:
+                return existing
 
         # Get user profile and recent logs
         profile_result = await self.db.execute(
@@ -251,11 +262,24 @@ class SuggestionService:
         return suggestion
 
     async def refresh_suggestion(self, user_id: UUID) -> DailySuggestion:
-        # Clear today's cached suggestion
+        # Delete existing today's suggestion from DB so a fresh one is generated
+        today = date.today()
+        result = await self.db.execute(
+            select(DailySuggestion).where(
+                DailySuggestion.user_id == user_id,
+                DailySuggestion.suggestion_date == today,
+            )
+        )
+        existing = result.scalars().all()
+        for s in existing:
+            await self.db.delete(s)
+        await self.db.flush()
+
+        # Clear cache
         await self.redis.delete(f"user:{user_id}:suggestion:today")
 
-        # Generate new suggestion
-        return await self.generate_suggestion(user_id)
+        # Generate fresh suggestion (force=True skips the existing-check guard)
+        return await self.generate_suggestion(user_id, force=True)
 
     async def dismiss_suggestion(self, user_id: UUID, suggestion_id: UUID) -> None:
         result = await self.db.execute(
@@ -297,7 +321,7 @@ class SuggestionService:
         summary_parts = []
         for log in recent_logs:
             meals_str = ", ".join(
-                f"{m.meal_type.value}: {m.name}" for m in (log.meals or [])
+                f"{m.meal_type.value if hasattr(m.meal_type, 'value') else m.meal_type}: {m.name}" for m in (log.meals or [])
             ) or "No meals"
             workouts_str = ", ".join(
                 f"{w.exercise_type} ({w.duration_min}min)" for w in (log.workouts or [])

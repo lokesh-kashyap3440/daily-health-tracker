@@ -1,4 +1,5 @@
 import json
+import logging
 import uuid
 from datetime import datetime, timezone
 from typing import Any, Callable, Optional
@@ -7,6 +8,8 @@ import aio_pika
 from aio_pika.abc import AbstractRobustConnection, AbstractRobustChannel
 
 from app.config import settings
+
+logger = logging.getLogger(__name__)
 
 
 class RabbitMQConnection:
@@ -17,6 +20,9 @@ class RabbitMQConnection:
         self.main_exchange: Optional[aio_pika.abc.AbstractExchange] = None
 
     async def connect(self) -> None:
+        if not self.url:
+            logger.info("RabbitMQ not configured — skipping connection")
+            return
         self._connection = await aio_pika.connect_robust(self.url)
         self._channel = await self._connection.channel()
         await self._declare_topology()
@@ -104,6 +110,9 @@ class RabbitMQConnection:
         data: dict[str, Any],
         exchange_name: str = "health.events",
     ) -> None:
+        if not self.is_connected:
+            logger.debug("RabbitMQ not connected — dropping event: %s", routing_key)
+            return
         exchange = await self._channel.get_exchange(exchange_name)
         message = aio_pika.Message(
             body=json.dumps(
@@ -138,6 +147,9 @@ class RabbitMQConnection:
         callback: Callable,
         prefetch_count: int = 1,
     ) -> None:
+        if not self.is_connected:
+            logger.warning("RabbitMQ not connected — cannot consume queue: %s", queue_name)
+            return
         queue = await self._channel.declare_queue(queue_name, durable=True)
         await self._channel.set_qos(prefetch_count=prefetch_count)
         await queue.consume(callback)

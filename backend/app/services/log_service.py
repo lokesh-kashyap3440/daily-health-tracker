@@ -44,9 +44,10 @@ class LogService:
             sleep_hours=0.0,
             mood_rating=3,
         )
+        log.meals = []
+        log.workouts = []
         self.db.add(log)
         await self.db.flush()
-        await self.db.refresh(log)
         return log
 
     async def get_log_by_date(
@@ -109,7 +110,6 @@ class LogService:
             log.mood_rating = mood_rating
 
         await self.db.flush()
-        await self.db.refresh(log)
 
         # Invalidate dashboard cache
         await self.redis.delete(f"user:{user_id}:dashboard")
@@ -131,6 +131,8 @@ class LogService:
         except Exception:
             pass  # Don't fail if RabbitMQ is down
 
+        # Re-fetch with relationships loaded to avoid MissingGreenlet on lazy load
+        log = await self.get_or_create_log_for_date(user_id, log_date)
         return log
 
     async def delete_log(self, user_id: UUID, log_id: UUID) -> None:

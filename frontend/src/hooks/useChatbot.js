@@ -7,10 +7,8 @@ export function useChatbot() {
   const sessionRef = useRef(null);
 
   const createSession = useCallback(async () => {
-    const { data } = await api.post('/chat/sessions', { title: 'New Chat' });
-    sessionRef.current = data.id;
+    sessionRef.current = null;
     setMessages([{ role: 'assistant', content: 'Hi! I\'m your health coach. How can I help you today?' }]);
-    return data.id;
   }, []);
 
   const sendMessage = useCallback(async (content) => {
@@ -24,7 +22,8 @@ export function useChatbot() {
         session_id: sessionRef.current,
         message: content,
       });
-      const aiMsg = { role: 'assistant', content: data.response };
+      sessionRef.current = data.session_id;
+      const aiMsg = { role: 'assistant', content: data.content };
       setMessages((prev) => [...prev, aiMsg]);
     } catch {
       setMessages((prev) => [...prev, { role: 'assistant', content: 'Sorry, something went wrong.' }]);

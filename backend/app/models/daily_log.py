@@ -45,6 +45,7 @@ class DailyLog(Base):
         CheckConstraint("mood_rating >= 1 AND mood_rating <= 5", name="ck_mood_rating"),
         CheckConstraint("water_glasses >= 0", name="ck_water_glasses"),
         CheckConstraint("sleep_hours >= 0 AND sleep_hours <= 24", name="ck_sleep_hours"),
+        CheckConstraint("sleep_quality >= 0 AND sleep_quality <= 5", name="ck_sleep_quality"),
         # Composite index for common query pattern
         __import__("sqlalchemy").Index(
             "ix_daily_logs_user_date", "user_id", "log_date"

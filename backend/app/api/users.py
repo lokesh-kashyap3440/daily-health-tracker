@@ -5,7 +5,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.api.deps import get_current_user, get_db, get_redis_client
 from app.core.exceptions import NotFoundException
 from app.core.redis import RedisClient
-from app.models.user import User, UserProfile
+from app.models.user import ActivityLevel, DietaryPreference, FitnessGoal, User, UserProfile
 from app.schemas.user import (
     UserPreferencesResponse,
     UserProfileResponse,
@@ -13,6 +13,29 @@ from app.schemas.user import (
     UserResponse,
 )
 from app.services.auth_service import AuthService
+
+# Map of string field names to their enum types for preferences
+_ENUM_FIELDS = {
+    "dietary_preference": DietaryPreference,
+    "fitness_goal": FitnessGoal,
+    "activity_level": ActivityLevel,
+}
+
+
+def _coerce_enum(value, enum_cls):
+    """Convert a string to an enum member if it's not already one."""
+    if value is None or isinstance(value, enum_cls):
+        return value
+    return enum_cls(value)
+
+
+def _get_enum_value(val):
+    """Safely extract the .value from an enum or return a string as-is."""
+    if val is None:
+        return None
+    if hasattr(val, "value"):
+        return val.value
+    return val
 
 router = APIRouter(prefix="/users", tags=["users"])
 
@@ -53,10 +76,12 @@ async def update_current_user_profile(
         profile = UserProfile(user_id=current_user.id)
         db.add(profile)
 
-    # Update profile fields
+    # Update profile fields — coerce enums before setting
     update_data = update.model_dump(exclude_unset=True)
     for field, value in update_data.items():
         if value is not None and hasattr(profile, field):
+            if field in _ENUM_FIELDS:
+                value = _coerce_enum(value, _ENUM_FIELDS[field])
             setattr(profile, field, value)
 
     # Update suggestions_enabled on user model if provided
@@ -103,18 +128,16 @@ async def get_user_profile(
     if profile is None:
         raise NotFoundException("UserProfile", str(current_user.id))
 
-    # Cache profile
-    await redis.set_json(cache_key, profile.to_dict() if hasattr(profile, 'to_dict') else {}, ttl=3600)
-
-    return UserProfileResponse(
+    # Build response and cache it
+    response_data = UserProfileResponse(
         id=profile.id,
         user_id=profile.user_id,
         age=profile.age,
         height_cm=profile.height_cm,
         weight_kg=profile.weight_kg,
-        dietary_preference=profile.dietary_preference.value if profile.dietary_preference else None,
-        fitness_goal=profile.fitness_goal.value if profile.fitness_goal else None,
-        activity_level=profile.activity_level.value if profile.activity_level else None,
+        dietary_preference=_get_enum_value(profile.dietary_preference),
+        fitness_goal=_get_enum_value(profile.fitness_goal),
+        activity_level=_get_enum_value(profile.activity_level),
         allergies=profile.allergies or [],
         cuisine_preference=profile.cuisine_preference,
         target_weight_kg=profile.target_weight_kg,
@@ -126,6 +149,9 @@ async def get_user_profile(
         created_at=profile.created_at,
         updated_at=profile.updated_at,
     )
+    await redis.set_json(cache_key, response_data.model_dump(mode="json"), ttl=3600)
+
+    return response_data
 
 
 @router.get("/me/preferences", response_model=UserPreferencesResponse)
@@ -145,9 +171,9 @@ async def get_user_preferences(
         )
 
     return UserPreferencesResponse(
-        dietary_preference=profile.dietary_preference.value if profile.dietary_preference else None,
-        fitness_goal=profile.fitness_goal.value if profile.fitness_goal else None,
-        activity_level=profile.activity_level.value if profile.activity_level else None,
+        dietary_preference=_get_enum_value(profile.dietary_preference),
+        fitness_goal=_get_enum_value(profile.fitness_goal),
+        activity_level=_get_enum_value(profile.activity_level),
         suggestions_enabled=current_user.suggestions_enabled,
         allergies=profile.allergies or [],
         cuisine_preference=profile.cuisine_preference,
@@ -175,10 +201,12 @@ async def update_user_preferences(
         profile = UserProfile(user_id=current_user.id)
         db.add(profile)
 
-    # Update fields
+    # Update fields — coerce enums before setting
     update_data = update.model_dump(exclude_unset=True)
     for field, value in update_data.items():
         if value is not None and hasattr(profile, field):
+            if field in _ENUM_FIELDS:
+                value = _coerce_enum(value, _ENUM_FIELDS[field])
             setattr(profile, field, value)
 
     if update.suggestions_enabled is not None:
@@ -188,9 +216,9 @@ async def update_user_preferences(
     await redis.delete(f"user:{current_user.id}:profile")
 
     return UserPreferencesResponse(
-        dietary_preference=profile.dietary_preference.value if profile.dietary_preference else None,
-        fitness_goal=profile.fitness_goal.value if profile.fitness_goal else None,
-        activity_level=profile.activity_level.value if profile.activity_level else None,
+        dietary_preference=_get_enum_value(profile.dietary_preference),
+        fitness_goal=_get_enum_value(profile.fitness_goal),
+        activity_level=_get_enum_value(profile.activity_level),
         suggestions_enabled=current_user.suggestions_enabled,
         allergies=profile.allergies or [],
         cuisine_preference=profile.cuisine_preference,

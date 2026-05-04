@@ -111,11 +111,16 @@ class UserProfile(Base):
     height_cm = Column(Float, nullable=True)
     weight_kg = Column(Float, nullable=True)
     dietary_preference = Column(
-        Enum(DietaryPreference), default=DietaryPreference.NON_VEGETARIAN
+        Enum(DietaryPreference, name="dietary_preference", create_type=False, values_callable=lambda x: [e.value for e in x]),
+        default=DietaryPreference.NON_VEGETARIAN.value,
     )
-    fitness_goal = Column(Enum(FitnessGoal), default=FitnessGoal.MAINTENANCE)
+    fitness_goal = Column(
+        Enum(FitnessGoal, name="fitness_goal", create_type=False, values_callable=lambda x: [e.value for e in x]),
+        default=FitnessGoal.MAINTENANCE.value,
+    )
     activity_level = Column(
-        Enum(ActivityLevel), default=ActivityLevel.MODERATELY_ACTIVE
+        Enum(ActivityLevel, name="activity_level", create_type=False, values_callable=lambda x: [e.value for e in x]),
+        default=ActivityLevel.MODERATELY_ACTIVE.value,
     )
     allergies = Column(ARRAY(String), default=[])
     cuisine_preference = Column(String(100), nullable=True)

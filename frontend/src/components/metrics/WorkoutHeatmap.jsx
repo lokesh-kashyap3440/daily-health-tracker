@@ -1,34 +1,60 @@
 import Card from '../ui/Card';
-import { useMetrics } from '../../hooks/useMetrics';
 import Spinner from '../ui/Spinner';
-
-const dayNames = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+import EmptyState from '../ui/EmptyState';
+import { useMetrics } from '../../hooks/useMetrics';
+import { Dumbbell, Smile } from 'lucide-react';
 
 export default function WorkoutHeatmap() {
-  const { data, isLoading } = useMetrics('1m');
+  const { data, isLoading, isError } = useMetrics('1m');
 
-  const counts = dayNames.map((_, i) => data?.workouts_by_day?.[i] || 0);
-  const maxCount = Math.max(...counts, 1);
+  if (isLoading) return <Card><div className="flex items-center gap-2 mb-4"><div className="p-2 rounded-xl bg-gradient-to-br from-purple-100 to-violet-100 shadow-sm"><Dumbbell size={18} className="text-purple-600" /></div><h2 className="font-display text-base font-semibold text-espresso-800">Workout Frequency</h2></div><Spinner /></Card>;
+
+  if (isError || !data) {
+    return (
+      <Card>
+        <div className="flex items-center gap-2 mb-4">
+          <div className="p-2 rounded-xl bg-gradient-to-br from-purple-100 to-violet-100 shadow-sm">
+            <Dumbbell size={18} className="text-purple-600" />
+          </div>
+          <h2 className="font-display text-base font-semibold text-espresso-800">Workout Frequency</h2>
+        </div>
+        <EmptyState title="No data yet" description="Log workouts to see your frequency." />
+      </Card>
+    );
+  }
 
   return (
-    <Card>
-      <h2 className="font-semibold text-slate-800 mb-4">Workout Frequency</h2>
-      {isLoading ? <Spinner /> : (
-        <div className="space-y-2">
-          {dayNames.map((day, i) => (
-            <div key={day} className="flex items-center gap-3">
-              <span className="text-sm text-slate-500 w-10">{day}</span>
-              <div className="flex-1 bg-slate-100 rounded-full h-6">
-                <div
-                  className="bg-green-500 h-6 rounded-full transition-all"
-                  style={{ width: `${(counts[i] / maxCount) * 100}%`, minWidth: counts[i] > 0 ? '20px' : '0' }}
-                />
-              </div>
-              <span className="text-sm font-medium text-slate-600 w-6">{counts[i]}</span>
-            </div>
-          ))}
+    <Card hover>
+      <div className="flex items-center gap-2 mb-5">
+        <div className="p-2 rounded-xl bg-gradient-to-br from-purple-100 to-violet-100 shadow-sm">
+          <Dumbbell size={18} className="text-purple-600" />
         </div>
-      )}
+        <h2 className="font-display text-base font-semibold text-espresso-800">Workout Frequency</h2>
+      </div>
+      <div className="space-y-4">
+        <div className="flex items-center gap-4 p-3 rounded-2xl bg-cream-50">
+          <div className="p-3 rounded-xl bg-gradient-to-br from-purple-100 to-violet-100 shadow-sm">
+            <Dumbbell size={24} className="text-purple-600" />
+          </div>
+          <div>
+            <p className="text-[10px] text-espresso-400 font-semibold uppercase tracking-wider">Total Workouts (30d)</p>
+            <p className="font-display text-3xl font-bold text-espresso-800">{data.total_workouts ?? '--'}</p>
+          </div>
+        </div>
+        {data.avg_mood && (
+          <div className="flex items-center gap-4 p-3 rounded-2xl bg-cream-50 pt-4">
+            <div className="p-3 rounded-xl bg-gradient-to-br from-green-100 to-emerald-100 shadow-sm">
+              <Smile size={24} className="text-green-600" />
+            </div>
+            <div>
+              <p className="text-[10px] text-espresso-400 font-semibold uppercase tracking-wider">Avg Mood Rating</p>
+              <p className="font-display text-xl font-bold text-espresso-800">
+                {data.avg_mood} <span className="text-sm font-normal text-espresso-400">/ 5</span>
+              </p>
+            </div>
+          </div>
+        )}
+      </div>
     </Card>
   );
 }

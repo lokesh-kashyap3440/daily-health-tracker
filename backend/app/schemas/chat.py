@@ -7,7 +7,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 class ChatSend(BaseModel):
     session_id: Optional[UUID] = None
-    content: str = Field(..., min_length=1, max_length=2000)
+    message: str = Field(..., min_length=1, max_length=2000)
 
 
 class ChatResponse(BaseModel):

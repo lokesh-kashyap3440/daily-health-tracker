@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react';
 import Button from '../ui/Button';
 import Card from '../ui/Card';
+import Spinner from '../ui/Spinner';
 import api from '../../api/client';
 import toast from 'react-hot-toast';
+import { UtensilsCrossed } from 'lucide-react';
 
 const diets = [
-  { value: 'vegetarian', label: 'Vegetarian' },
-  { value: 'non_vegetarian', label: 'Non-Vegetarian' },
-  { value: 'vegan', label: 'Vegan' },
-  { value: 'keto', label: 'Keto' },
+  { value: 'vegetarian', label: 'Vegetarian', emoji: '🥦' },
+  { value: 'non_vegetarian', label: 'Non-Vegetarian', emoji: '🍗' },
+  { value: 'vegan', label: 'Vegan', emoji: '🌱' },
+  { value: 'keto', label: 'Keto', emoji: '🥑' },
 ];
 
 const allergyOptions = ['Peanuts', 'Dairy', 'Shellfish', 'Gluten', 'Soy', 'Eggs', 'None'];
@@ -20,7 +22,9 @@ export default function DietaryPrefs() {
   useEffect(() => {
     api.get('/users/me/profile').then(({ data }) => {
       setPrefs({ dietary_preference: data.dietary_preference || 'non_vegetarian', allergies: data.allergies || [] });
-    }).catch(() => {}).finally(() => setLoading(false));
+    }).catch(() => {
+      toast.error('Failed to load preferences');
+    }).finally(() => setLoading(false));
   }, []);
 
   const toggleAllergy = (a) => {
@@ -32,42 +36,53 @@ export default function DietaryPrefs() {
 
   const save = async () => {
     try {
-      await api.patch('/users/me/profile', prefs);
+      await api.put('/users/me/preferences', prefs);
       toast.success('Preferences updated');
     } catch { toast.error('Failed to update'); }
   };
 
-  if (loading) return null;
+  if (loading) return <Card><div className="flex items-center gap-2 mb-4"><div className="p-2 rounded-xl bg-gradient-to-br from-amber-100 to-orange-100 shadow-sm"><UtensilsCrossed size={18} className="text-amber-600" /></div><h2 className="font-display text-base font-semibold text-espresso-800">Dietary Preferences</h2></div><Spinner /></Card>;
 
   return (
-    <Card>
-      <h2 className="font-semibold text-slate-800 mb-4">Dietary Preferences</h2>
-      <div className="space-y-4">
+    <Card className="relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-amber-100/50 to-transparent rounded-bl-full pointer-events-none" />
+      <div className="flex items-center gap-2 mb-5 relative">
+        <div className="p-2 rounded-xl bg-gradient-to-br from-amber-100 to-orange-100 shadow-sm">
+          <UtensilsCrossed size={18} className="text-amber-600" />
+        </div>
+        <h2 className="font-display text-base font-semibold text-espresso-800">Dietary Preferences</h2>
+      </div>
+      <div className="space-y-5 relative">
         <div>
-          <label className="text-sm font-medium text-slate-700 mb-2 block">Diet Type</label>
+          <label className="text-sm font-medium text-espresso-600 mb-2.5 block">Diet Type</label>
           <div className="flex flex-wrap gap-2">
             {diets.map((d) => (
               <button
                 key={d.value}
                 onClick={() => setPrefs({ ...prefs, dietary_preference: d.value })}
-                className={`px-4 py-2 rounded-xl text-sm font-medium cursor-pointer transition ${
-                  prefs.dietary_preference === d.value ? 'bg-green-600 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                className={`inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-sm font-medium cursor-pointer transition-all duration-200 ${
+                  prefs.dietary_preference === d.value
+                    ? 'bg-sage-600 text-white shadow-md shadow-sage-200/50'
+                    : 'bg-cream-100 text-espresso-600 hover:bg-cream-200 border border-cream-200'
                 }`}
               >
+                <span>{d.emoji}</span>
                 {d.label}
               </button>
             ))}
           </div>
         </div>
         <div>
-          <label className="text-sm font-medium text-slate-700 mb-2 block">Allergies</label>
+          <label className="text-sm font-medium text-espresso-600 mb-2.5 block">Allergies</label>
           <div className="flex flex-wrap gap-2">
             {allergyOptions.map((a) => (
               <button
                 key={a}
                 onClick={() => toggleAllergy(a)}
-                className={`px-4 py-2 rounded-xl text-sm font-medium cursor-pointer transition ${
-                  prefs.allergies.includes(a) ? 'bg-red-100 text-red-700 ring-2 ring-red-400' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                className={`px-4 py-2 rounded-xl text-sm font-medium cursor-pointer transition-all duration-200 ${
+                  prefs.allergies.includes(a)
+                    ? 'bg-terracotta-100 text-terracotta-700 ring-2 ring-terracotta-400 shadow-sm'
+                    : 'bg-cream-100 text-espresso-600 hover:bg-cream-200 border border-cream-200'
                 }`}
               >
                 {a}
@@ -75,7 +90,7 @@ export default function DietaryPrefs() {
             ))}
           </div>
         </div>
-        <Button onClick={save}>Save Preferences</Button>
+        <Button onClick={save} variant="gradient">Save Preferences</Button>
       </div>
     </Card>
   );

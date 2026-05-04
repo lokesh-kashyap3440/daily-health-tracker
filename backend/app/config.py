@@ -1,5 +1,3 @@
-from typing import List
-
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -16,8 +14,8 @@ class Settings(BaseSettings):
     # Redis
     REDIS_URL: str = "redis://@redis:6379/0"
 
-    # RabbitMQ
-    RABBITMQ_URL: str = "amqp://guest:guest@rabbitmq:5672/"
+    # RabbitMQ — leave empty to disable (no-op connect/publish)
+    RABBITMQ_URL: str = ""
 
     # DeepSeek API
     DEEPSEEK_API_KEY: str = ""
@@ -35,14 +33,20 @@ class Settings(BaseSettings):
     APP_ENV: str = "development"
     APP_DEBUG: bool = True
     LOG_LEVEL: str = "info"
-    CORS_ORIGINS: List[str] = [
-        "http://localhost:5173",
-        "http://localhost:3000",
-    ]
+    CORS_ORIGINS: str = "http://localhost:5173,http://localhost:3000"
 
     # Rate Limiting
     RATE_LIMIT_PER_MINUTE: int = 100
     RATE_LIMIT_CHAT_PER_MINUTE: int = 10
+
+
+    @property
+    def async_database_url(self) -> str:
+        """Convert Render's postgresql:// to postgresql+asyncpg:// for asyncpg driver."""
+        url = self.DATABASE_URL
+        if url.startswith("postgresql://"):
+            return url.replace("postgresql://", "postgresql+asyncpg://", 1)
+        return url
 
 
 settings = Settings()

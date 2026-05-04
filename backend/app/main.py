@@ -1,9 +1,11 @@
 import logging
+import os
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import FileResponse, JSONResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import ValidationError
 
 from app.api.auth import router as auth_router
@@ -76,7 +78,7 @@ app = FastAPI(
 # CORS - must be first
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.CORS_ORIGINS,
+    allow_origins=[o.strip() for o in settings.CORS_ORIGINS.split(",")],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -161,3 +163,21 @@ async def health_check():
             __import__("datetime").timezone.utc
         ).isoformat(),
     }
+
+
+# ── Static Frontend (SPA) ───────────────────────────────────────────
+# Serves the built frontend when backend/static/ exists (Render production).
+# During local dev, the static/ directory is absent and Vite handles the frontend.
+STATIC_DIR = os.path.join(os.path.dirname(__file__), "..", "static")
+if os.path.isdir(STATIC_DIR):
+    app.mount("/assets", StaticFiles(directory=os.path.join(STATIC_DIR, "assets")), name="assets")
+
+    @app.get("/{full_path:path}")
+    async def serve_spa(full_path: str):
+        # Return JSON 404 for unmatched /api/* paths rather than HTML
+        if full_path.startswith("api/"):
+            return JSONResponse({"detail": "Not Found"}, status_code=404)
+        index_path = os.path.join(STATIC_DIR, "index.html")
+        if os.path.exists(index_path):
+            return FileResponse(index_path, media_type="text/html")
+        return JSONResponse({"detail": "Not Found"}, status_code=404)

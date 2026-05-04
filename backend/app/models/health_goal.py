@@ -35,7 +35,7 @@ class HealthGoal(Base):
     user_id = Column(
         UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), nullable=False, index=True
     )
-    goal_type = Column(Enum(GoalType), nullable=False)
+    goal_type = Column(Enum(GoalType, name="goal_type", create_type=False, values_callable=lambda x: [e.value for e in x]), nullable=False)
     target_value = Column(Float, nullable=False)
     current_value = Column(Float, default=0.0)
     unit = Column(String(50), nullable=False)

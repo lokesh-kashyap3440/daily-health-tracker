@@ -58,9 +58,9 @@ class ChatMessage(Base):
     user_id = Column(
         UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), nullable=False, index=True
     )
-    role = Column(Enum(ChatRole), nullable=False)
+    role = Column(Enum(ChatRole, name="chat_role", create_type=False, values_callable=lambda x: [e.value for e in x]), nullable=False)
     content = Column(Text, nullable=False)
-    metadata = Column(JSONB, nullable=True)
+    message_metadata = Column("metadata", JSONB, nullable=True)
     created_at = Column(
         DateTime(timezone=True), server_default=func.now(), nullable=False
     )

@@ -26,10 +26,10 @@ async def get_today_suggestion(
     current_user: User = Depends(get_current_user),
     suggestion_service: SuggestionService = Depends(get_suggestion_service),
 ):
-    """Get today's AI-generated suggestion."""
+    """Get today's AI-generated suggestion. Auto-generates if none exists yet."""
     suggestion = await suggestion_service.get_today_suggestion(current_user.id)
     if suggestion is None:
-        raise NotFoundException("DailySuggestion", "today")
+        suggestion = await suggestion_service.generate_suggestion(current_user.id)
     return SuggestionResponse(
         id=suggestion.id,
         user_id=suggestion.user_id,
@@ -38,7 +38,7 @@ async def get_today_suggestion(
         title=suggestion.title,
         content=suggestion.content,
         is_dismissed=suggestion.is_dismissed,
-        metadata=suggestion.metadata,
+        metadata=suggestion.suggestion_metadata,
         created_at=suggestion.created_at,
     )
 
@@ -66,7 +66,7 @@ async def get_recent_suggestions(
                 title=s.title,
                 content=s.content,
                 is_dismissed=s.is_dismissed,
-                metadata=s.metadata,
+                metadata=s.suggestion_metadata,
                 created_at=s.created_at,
             )
             for s in suggestions
@@ -90,7 +90,7 @@ async def refresh_suggestion(
         title=suggestion.title,
         content=suggestion.content,
         is_dismissed=suggestion.is_dismissed,
-        metadata=suggestion.metadata,
+        metadata=suggestion.suggestion_metadata,
         created_at=suggestion.created_at,
     )
 

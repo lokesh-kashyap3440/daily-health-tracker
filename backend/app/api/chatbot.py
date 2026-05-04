@@ -37,7 +37,7 @@ async def send_message(
     result = await chat_service.send_message(
         user_id=current_user.id,
         session_id=request.session_id,
-        content=request.content,
+        content=request.message,
     )
     return ChatResponse(
         session_id=result["session_id"],
@@ -61,7 +61,7 @@ async def stream_message(
         async for event in chat_service.stream_message(
             user_id=current_user.id,
             session_id=request.session_id,
-            content=request.content,
+            content=request.message,
         ):
             if event["type"] == "chunk":
                 yield f"data: {json.dumps(event)}\n\n"

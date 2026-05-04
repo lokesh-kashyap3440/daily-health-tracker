@@ -1,6 +1,6 @@
 import Card from '../ui/Card';
 import Spinner from '../ui/Spinner';
-import { Lightbulb, RefreshCw } from 'lucide-react';
+import { Sparkles, RefreshCw } from 'lucide-react';
 import { useSuggestions } from '../../hooks/useSuggestions';
 import api from '../../api/client';
 import { useQueryClient } from '@tanstack/react-query';
@@ -8,7 +8,7 @@ import { useState } from 'react';
 import toast from 'react-hot-toast';
 
 export default function DailySuggestion() {
-  const { data, isLoading } = useSuggestions();
+  const { data, isLoading, isError, refetch } = useSuggestions();
   const qc = useQueryClient();
   const [refreshing, setRefreshing] = useState(false);
 
@@ -25,19 +25,45 @@ export default function DailySuggestion() {
   };
 
   return (
-    <Card className="bg-gradient-to-r from-green-50 to-emerald-50 border-green-200">
-      <div className="flex items-center justify-between mb-3">
-        <div className="flex items-center gap-2">
-          <Lightbulb size={20} className="text-green-600" />
-          <h2 className="font-semibold text-green-800">Daily AI Suggestion</h2>
+    <Card variant="gradient" className="relative overflow-hidden">
+      {/* Decorative background circles */}
+      <div className="absolute -top-6 -right-6 w-32 h-32 rounded-full bg-sage-200/20 blur-2xl pointer-events-none" />
+      <div className="absolute -bottom-8 -left-8 w-40 h-40 rounded-full bg-terracotta-200/15 blur-2xl pointer-events-none" />
+
+      <div className="flex items-start justify-between relative z-10">
+        <div className="flex items-start gap-3">
+          <div className="p-2.5 rounded-xl bg-gradient-to-br from-sage-100 to-sage-200 shadow-sm flex-shrink-0 mt-0.5">
+            <Sparkles size={20} className="text-sage-600" />
+          </div>
+          <div>
+            <h2 className="font-display text-base font-semibold text-espresso-800 mb-1">
+              Daily Wellness Insight
+            </h2>
+            {isLoading ? (
+              <Spinner size="sm" />
+            ) : isError ? (
+              <div className="text-sm text-espresso-500">
+                <p>Could not load your wellness insight.</p>
+                <button onClick={() => refetch()} className="text-sage-600 underline mt-1 hover:text-sage-700 cursor-pointer">
+                  Try again
+                </button>
+              </div>
+            ) : (
+              <p className="text-sm text-espresso-600 leading-relaxed">
+                {data?.content || 'Complete your profile to get personalized health suggestions tailored just for you.'}
+              </p>
+            )}
+          </div>
         </div>
-        <button onClick={handleRefresh} disabled={refreshing} className="p-1.5 hover:bg-green-100 rounded-lg cursor-pointer disabled:opacity-50">
-          <RefreshCw size={18} className={`text-green-600 ${refreshing ? 'animate-spin' : ''}`} />
+        <button
+          onClick={handleRefresh}
+          disabled={refreshing}
+          className="p-2 rounded-xl hover:bg-sage-100/50 transition-colors cursor-pointer disabled:opacity-50 flex-shrink-0"
+          title="Get new suggestion"
+        >
+          <RefreshCw size={18} className={`text-sage-500 ${refreshing ? 'animate-spin' : ''}`} />
         </button>
       </div>
-      {isLoading ? <Spinner /> : (
-        <p className="text-sm text-slate-700 leading-relaxed">{data?.content || 'Complete your profile to get personalized health suggestions.'}</p>
-      )}
     </Card>
   );
 }

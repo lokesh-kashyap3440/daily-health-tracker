@@ -18,14 +18,12 @@ depends_on: Union[str, Sequence[str], None] = None
 
 def upgrade() -> None:
     # Create ENUM types
-    op.execute("CREATE TYPE dietary_preference AS ENUM ('vegetarian', 'non_vegetarian', 'vegan', 'keto', 'paleo', 'mediterranean')")
-    op.execute("CREATE TYPE fitness_goal AS ENUM ('weight_loss', 'muscle_gain', 'maintenance', 'endurance', 'flexibility')")
-    op.execute("CREATE TYPE activity_level AS ENUM ('sedentary', 'lightly_active', 'moderately_active', 'very_active', 'extremely_active')")
-    op.execute("CREATE TYPE meal_type AS ENUM ('breakfast', 'lunch', 'dinner', 'snack')")
-    op.execute("CREATE TYPE workout_intensity AS ENUM ('low', 'medium', 'high')")
-    op.execute("CREATE TYPE chat_role AS ENUM ('user', 'assistant', 'system')")
-    op.execute("CREATE TYPE suggestion_category AS ENUM ('diet', 'workout', 'sleep', 'hydration', 'general_wellness')")
-    op.execute("CREATE TYPE goal_type AS ENUM ('weight', 'calories', 'protein', 'water', 'sleep', 'workout_frequency')")
+    type_names = [
+        "dietary_preference", "fitness_goal", "activity_level", "meal_type",
+        "workout_intensity", "chat_role", "suggestion_category", "goal_type",
+    ]
+    for name in type_names:
+        op.execute(f"DROP TYPE IF EXISTS {name} CASCADE")
 
     # ── Users table ────────────────────────────────────────────────
     op.create_table(

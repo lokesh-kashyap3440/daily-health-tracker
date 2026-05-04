@@ -291,7 +291,7 @@ class ChatbotService:
             "role": "assistant",
             "content": ai_content,
             "created_at": ai_msg.created_at,
-            "metadata": ai_msg.metadata,
+            "metadata": ai_msg.message_metadata,
         }
 
     async def stream_message(
@@ -465,12 +465,15 @@ class ChatbotService:
         return {
             "session_id": session_id,
             "title": session.title,
+            "created_at": session.created_at,
+            "updated_at": session.updated_at,
             "messages": [
                 {
                     "id": msg.id,
+                    "session_id": msg.session_id,
                     "role": msg.role.value,
                     "content": msg.content,
-                    "metadata": msg.metadata,
+                    "metadata": msg.message_metadata,
                     "created_at": msg.created_at,
                 }
                 for msg in messages

@@ -17,7 +17,7 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      - ./scripts/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql:ro
+      # - ./scripts/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql:ro  # Disabled: Alembic handles migrations
     environment:
       POSTGRES_DB: healthtracker
       POSTGRES_USER: ${DB_USER:-healthuser}
@@ -100,7 +100,7 @@ services:
         condition: service_healthy
     # Run database migrations (alembic) on startup, then start the ASGI server
     command: >
-      sh -c "alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port 8000 --workers 4"
+      sh -c "sleep 5 && alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port 8000 --workers 4"
     networks:
       - health-network
 
@@ -128,10 +128,11 @@ services:
     networks:
       - health-network
 
-  # ── Frontend ──────────────────────────────────────────────────────────────
+  # ── Frontend (Nginx + SPA) ────────────────────────────────────────────────
   # Statically built React + Vite SPA served by Nginx. Built in a multi-stage
   # Dockerfile: Node.js for compilation, then the output is copied into an
-  # Nginx Alpine image for production serving.
+  # Nginx Alpine image. Also acts as the reverse proxy — forwarding /api/*
+  # requests to the backend service.
   frontend:
     build:
       context: ./frontend
@@ -139,27 +140,9 @@ services:
     container_name: healthtracker-frontend
     restart: unless-stopped
     ports:
-      - "80"
+      - "1252:80"
     depends_on:
       - backend
-    networks:
-      - health-network
-
-  # ── Nginx Reverse Proxy ───────────────────────────────────────────────────
-  # Single entry point for all HTTP traffic. Routes /api/* requests to the
-  # backend FastAPI service and all other requests to the frontend static
-  # files. Handles CORS, SSE buffering controls, and SPA fallback routing.
-  nginx:
-    image: nginx:alpine
-    container_name: healthtracker-nginx
-    restart: unless-stopped
-    ports:
-      - "80:80"
-    volumes:
-      - ./frontend/nginx.conf:/etc/nginx/conf.d/default.conf:ro
-    depends_on:
-      - backend
-      - frontend
     networks:
       - health-network
 

@@ -1,22 +1,25 @@
 const suggestions = [
-  'Meal plan for weight loss',
-  'High-protein breakfast ideas',
-  'Quick home workout routine',
-  'How to improve sleep quality',
-  'Healthy snacking tips',
-  'Post-workout nutrition',
+  { text: 'Meal plan for weight loss', emoji: '🥗' },
+  { text: 'High-protein breakfast ideas', emoji: '🍳' },
+  { text: 'Quick home workout routine', emoji: '💪' },
+  { text: 'How to improve sleep quality', emoji: '😴' },
+  { text: 'Healthy snacking tips', emoji: '🥜' },
+  { text: 'Post-workout nutrition', emoji: '🏋️' },
 ];
 
 export default function SuggestionChips({ onSelect }) {
+  if (!onSelect) return null;
+
   return (
-    <div className="flex flex-wrap gap-2 p-4 pt-0">
-      {suggestions.map((s) => (
+    <div className="flex flex-wrap gap-2 px-4 sm:px-6 pb-3 pt-1">
+      {suggestions.map((s, i) => (
         <button
-          key={s}
-          onClick={() => onSelect(s)}
-          className="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-600 text-xs font-medium rounded-full transition cursor-pointer"
+          key={s.text}
+          onClick={() => onSelect(s.text)}
+          className="group inline-flex items-center gap-1.5 px-3.5 py-2 bg-cream-50 hover:bg-sage-100 hover:text-sage-700 text-espresso-500 text-xs font-medium rounded-full border border-cream-200 hover:border-sage-300 transition-all duration-200 cursor-pointer hover:shadow-sm hover:-translate-y-0.5 active:scale-95"
         >
-          {s}
+          <span className="text-sm">{s.emoji}</span>
+          <span>{s.text}</span>
         </button>
       ))}
     </div>

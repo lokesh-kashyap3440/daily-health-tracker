@@ -23,9 +23,9 @@ logger = logging.getLogger(__name__)
 
 async def process_suggestion(message: dict) -> None:
     """Process a single suggestion generation request."""
-    payload = message.get("payload", {})
+    # Message envelope has {event_id, event_type, timestamp, data: {user_id, date, context}}
+    payload = message.get("data", {})
     user_id = payload.get("user_id")
-    suggestion_date = payload.get("date", str(date.today()))
 
     if not user_id:
         logger.error("Suggestion request missing user_id: %s", message)
@@ -36,14 +36,11 @@ async def process_suggestion(message: dict) -> None:
             from app.core.redis import get_redis
             redis = await get_redis()
             service = SuggestionService(db=db, redis=redis)
-            suggestion = await service.generate_daily_suggestion(
-                user_id=user_id,
-                suggestion_date=date.fromisoformat(suggestion_date),
-            )
+            suggestion = await service.generate_suggestion(user_id=user_id)
             logger.info(
                 "Generated suggestion for user=%s category=%s",
                 user_id,
-                suggestion.category if suggestion else "none",
+                suggestion.category.value if suggestion else "none",
             )
         except Exception:
             logger.exception("Failed to generate suggestion for user=%s", user_id)
@@ -54,18 +51,12 @@ async def main() -> None:
     logger.info("Starting suggestion worker...")
     await rabbitmq_connection.connect()
 
-    channel = await rabbitmq_connection.get_channel()
-    await channel.set_qos(prefetch_count=1)
-
-    queue = await channel.declare_queue("suggestion.generate", durable=True)
-    await queue.bind("health.suggestions", routing_key="generate")
-
     async def on_message(message) -> None:
         async with message.process():
             body = json.loads(message.body)
             await process_suggestion(body)
 
-    await queue.consume(on_message)
+    await rabbitmq_connection.consume("suggestion.generate", on_message)
     logger.info("Suggestion worker listening on queue: suggestion.generate")
 
     try:

@@ -35,7 +35,7 @@ class Meal(Base):
     user_id = Column(
         UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), nullable=False, index=True
     )
-    meal_type = Column(Enum(MealType), nullable=False)
+    meal_type = Column(Enum(MealType, name="meal_type", create_type=False, values_callable=lambda x: [e.value for e in x]), nullable=False)
     name = Column(String(200), nullable=False)
     description = Column(Text, nullable=True)
     calories = Column(Integer, nullable=True)
