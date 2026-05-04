@@ -42,10 +42,32 @@ class Settings(BaseSettings):
 
     @property
     def async_database_url(self) -> str:
-        """Convert Render's postgresql:// to postgresql+asyncpg:// for asyncpg driver."""
+        """Convert provider URLs to asyncpg-compatible format.
+
+        Render and other cloud providers supply postgresql:// or postgres:// URLs.
+        asyncpg needs postgresql+asyncpg:// and uses 'ssl' not 'sslmode'.
+        """
         url = self.DATABASE_URL
-        if url.startswith("postgresql://"):
-            return url.replace("postgresql://", "postgresql+asyncpg://", 1)
+
+        # Normalize postgres:// → postgresql://
+        if url.startswith("postgres://"):
+            url = url.replace("postgres://", "postgresql://", 1)
+
+        # Add asyncpg driver
+        if url.startswith("postgresql://") and "+asyncpg" not in url:
+            url = url.replace("postgresql://", "postgresql+asyncpg://", 1)
+
+        # asyncpg uses 'ssl' parameter, not 'sslmode'
+        if "sslmode=" in url:
+            import re
+            sslmode = re.search(r"sslmode=(\w+)", url)
+            if sslmode:
+                mode = sslmode.group(1)
+                url = re.sub(r"[?&]sslmode=\w+", "", url)
+                ssl_val = "true" if mode in ("require", "verify-ca", "verify-full") else mode
+                connector = "&" if "?" in url else "?"
+                url = f"{url}{connector}ssl={ssl_val}"
+
         return url
 
 

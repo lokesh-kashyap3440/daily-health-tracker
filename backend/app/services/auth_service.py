@@ -96,18 +96,21 @@ class AuthService:
         self.db.add(refresh_token)
         await self.db.flush()
 
-        # Cache user profile
-        await self.redis.set_json(
-            f"user:{user.id}:profile",
-            {
-                "id": str(user.id),
-                "email": user.email,
-                "first_name": user.first_name,
-                "last_name": user.last_name,
-                "role": user.role,
-            },
-            ttl=3600,
-        )
+        # Cache user profile (non-critical — don't fail login if Redis is down)
+        try:
+            await self.redis.set_json(
+                f"user:{user.id}:profile",
+                {
+                    "id": str(user.id),
+                    "email": user.email,
+                    "first_name": user.first_name,
+                    "last_name": user.last_name,
+                    "role": user.role,
+                },
+                ttl=3600,
+            )
+        except Exception:
+            pass
 
         return {
             "access_token": access_token,
