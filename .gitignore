@@ -34,9 +34,6 @@ Thumbs.db
 # Alembic
 backend/alembic/versions/__pycache__/
 
-# Built frontend (for Render deployment)
-backend/static/
-
 # E2E test output
 frontend/test-results/
 

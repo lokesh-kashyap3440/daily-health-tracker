@@ -4,15 +4,7 @@ services:
     runtime: python
     region: oregon
     plan: free
-    buildCommand: |
-      # Install Node.js for frontend build (Render Python env doesn't have it)
-      curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
-      apt-get install -y nodejs
-      # Install Python dependencies
-      pip install -r backend/requirements.txt
-      # Build frontend and copy to backend/static/
-      cd frontend && npm ci && npm run build
-      mkdir -p ../backend/static && cp -r dist/* ../backend/static/
+    buildCommand: pip install -r backend/requirements.txt
     startCommand: cd backend && alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port $PORT --workers 1
     healthCheckPath: /api/health
     envVars:
