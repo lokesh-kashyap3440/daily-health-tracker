@@ -55,7 +55,9 @@ class ChatbotService:
         self.redis = redis
         self._http_client: Optional[httpx.AsyncClient] = None
 
-    async def _get_http_client(self) -> httpx.AsyncClient:
+    async def _get_http_client(self) -> Optional[httpx.AsyncClient]:
+        if not settings.DEEPSEEK_API_KEY:
+            return None
         global _shared_http_client
         if _shared_http_client is None or _shared_http_client.is_closed:
             _shared_http_client = httpx.AsyncClient(
@@ -234,6 +236,14 @@ class ChatbotService:
         try:
             # Call DeepSeek API
             client = await self._get_http_client()
+            if client is None:
+                return {
+                    "role": "assistant",
+                    "content": "I'm currently unavailable because the AI API key is not configured. Please set DEEPSEEK_API_KEY in the Render dashboard.",
+                    "session_id": session_id,
+                    "message_id": str(uuid4()),
+                    "created_at": datetime.now(timezone.utc),
+                }
             payload = {
                 "model": settings.DEEPSEEK_MODEL,
                 "messages": messages,
@@ -351,6 +361,10 @@ class ChatbotService:
 
         try:
             client = await self._get_http_client()
+            if client is None:
+                yield f"data: {json.dumps({'content': 'AI API key not configured. Set DEEPSEEK_API_KEY in Render dashboard.'})}\n\n"
+                yield "data: [DONE]\n\n"
+                return
             payload = {
                 "model": settings.DEEPSEEK_MODEL,
                 "messages": messages,

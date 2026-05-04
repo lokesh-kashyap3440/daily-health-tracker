@@ -43,7 +43,9 @@ class SuggestionService:
         self.redis = redis
         self._http_client: Optional[httpx.AsyncClient] = None
 
-    async def _get_http_client(self) -> httpx.AsyncClient:
+    async def _get_http_client(self) -> Optional[httpx.AsyncClient]:
+        if not settings.DEEPSEEK_API_KEY:
+            return None
         global _shared_suggestion_http_client
         if _shared_suggestion_http_client is None or _shared_suggestion_http_client.is_closed:
             _shared_suggestion_http_client = httpx.AsyncClient(
@@ -158,15 +160,20 @@ class SuggestionService:
         logs_summary = self._build_logs_summary(recent_logs)
         prompt = SUGGESTION_PROMPT_TEMPLATE.format(
             age=profile.age if profile and profile.age else "Not specified",
-            fitness_goal=profile.fitness_goal.value if profile and profile.fitness_goal else "Not specified",
-            dietary_pref=profile.dietary_preference.value if profile and profile.dietary_preference else "Not specified",
-            activity_level=profile.activity_level.value if profile and profile.activity_level else "Not specified",
+            fitness_goal=(profile.fitness_goal.value if hasattr(profile.fitness_goal, 'value') else profile.fitness_goal) if profile and profile.fitness_goal else "Not specified",
+            dietary_pref=(profile.dietary_preference.value if hasattr(profile.dietary_preference, 'value') else profile.dietary_preference) if profile and profile.dietary_preference else "Not specified",
+            activity_level=(profile.activity_level.value if hasattr(profile.activity_level, 'value') else profile.activity_level) if profile and profile.activity_level else "Not specified",
             recent_logs_summary=logs_summary,
         )
 
         try:
             # Call DeepSeek API
             client = await self._get_http_client()
+            if client is None:
+                raise ExternalAPIException(
+                    "DEEPSEEK_API_KEY not configured — set it in Render dashboard",
+                    status_code=503,
+                )
             response = await client.post(
                 "/chat/completions",
                 json={
