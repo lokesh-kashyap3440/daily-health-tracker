@@ -54,14 +54,14 @@ services:
           name: health-tracker-redis
           property: connectionString
 
+  - type: redis
+    name: health-tracker-redis
+    plan: free
+    maxmemoryPolicy: allkeys-lru
+    region: oregon
+
 databases:
   - name: health-tracker-db
     databaseName: healthtracker
     plan: free
-    region: oregon
-
-redis:
-  - name: health-tracker-redis
-    plan: free
-    maxmemoryPolicy: allkeys-lru
     region: oregon
