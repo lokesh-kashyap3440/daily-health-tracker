@@ -51,17 +51,8 @@ services:
       - key: REDIS_URL
         fromService:
           type: redis
-          name: health-tracker-redis
+          name: ems-redis
           property: connectionString
-
-  - type: redis
-    name: health-tracker-redis
-    plan: free
-    maxmemoryPolicy: allkeys-lru
-    region: oregon
-    ipAllowList:
-      - source: 0.0.0.0/0
-        description: everywhere
 
 databases:
   - name: health-tracker-db
