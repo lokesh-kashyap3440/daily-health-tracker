@@ -177,6 +177,11 @@ if os.path.isdir(STATIC_DIR):
         # Return JSON 404 for unmatched /api/* paths rather than HTML
         if full_path.startswith("api/"):
             return JSONResponse({"detail": "Not Found"}, status_code=404)
+        # Serve static files (manifest, sw.js, icons, etc.) from the root
+        static_path = os.path.join(STATIC_DIR, full_path)
+        if os.path.isfile(static_path):
+            return FileResponse(static_path)
+        # SPA fallback — serve index.html for all other routes
         index_path = os.path.join(STATIC_DIR, "index.html")
         if os.path.exists(index_path):
             return FileResponse(index_path, media_type="text/html")
