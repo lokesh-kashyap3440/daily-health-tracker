@@ -99,13 +99,14 @@ async def get_logs_in_range(
 @router.put("/water", response_model=DailyLogResponse)
 async def update_water(
     request: UpdateWaterRequest,
+    log_date: Optional[date] = Query(None, alias="log_date"),
     current_user: User = Depends(get_current_user),
     log_service: LogService = Depends(get_log_service),
 ):
-    """Update water intake for today."""
+    """Update water intake for a specific date (defaults to today)."""
     log = await log_service.update_daily_log(
         user_id=current_user.id,
-        log_date=date.today(),
+        log_date=log_date or date.today(),
         water_glasses=request.glasses,
     )
     return _log_to_response(log)
@@ -114,14 +115,16 @@ async def update_water(
 @router.put("/sleep", response_model=DailyLogResponse)
 async def update_sleep(
     request: UpdateSleepRequest,
+    log_date: Optional[date] = Query(None, alias="log_date"),
     current_user: User = Depends(get_current_user),
     log_service: LogService = Depends(get_log_service),
 ):
-    """Update sleep hours for today."""
+    """Update sleep hours and quality for a specific date (defaults to today)."""
     log = await log_service.update_daily_log(
         user_id=current_user.id,
-        log_date=date.today(),
+        log_date=log_date or date.today(),
         sleep_hours=request.hours,
+        sleep_quality=request.quality,
     )
     return _log_to_response(log)
 
@@ -129,13 +132,14 @@ async def update_sleep(
 @router.put("/mood", response_model=DailyLogResponse)
 async def update_mood(
     request: UpdateMoodRequest,
+    log_date: Optional[date] = Query(None, alias="log_date"),
     current_user: User = Depends(get_current_user),
     log_service: LogService = Depends(get_log_service),
 ):
-    """Update mood rating for today."""
+    """Update mood rating for a specific date (defaults to today)."""
     log = await log_service.update_daily_log(
         user_id=current_user.id,
-        log_date=date.today(),
+        log_date=log_date or date.today(),
         mood_rating=request.rating,
     )
     return _log_to_response(log)

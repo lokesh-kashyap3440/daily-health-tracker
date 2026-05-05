@@ -25,7 +25,8 @@ class UpdateWaterRequest(BaseModel):
 
 
 class UpdateSleepRequest(BaseModel):
-    hours: float = Field(..., ge=0, le=24)
+    hours: Optional[float] = Field(None, ge=0, le=24)
+    quality: Optional[int] = Field(None, ge=1, le=5)
 
 
 class UpdateMoodRequest(BaseModel):

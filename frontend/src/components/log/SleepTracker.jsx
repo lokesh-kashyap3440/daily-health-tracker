@@ -9,39 +9,31 @@ export default function SleepTracker({ sleepHours = 0, sleepQuality = 0, date })
   const [quality, setQuality] = useState(sleepQuality);
   const qc = useQueryClient();
   const debounceRef = useRef(null);
-  const today = new Date().toISOString().split('T')[0];
-  const isToday = date === today;
 
   useEffect(() => {
     setHours(sleepHours);
     setQuality(sleepQuality);
   }, [sleepHours, sleepQuality]);
 
-  const saveHours = useCallback((h, q) => {
+  const saveHours = useCallback((h) => {
     const hoursNum = Number(h);
     if (debounceRef.current) clearTimeout(debounceRef.current);
     debounceRef.current = setTimeout(async () => {
       try {
-        if (isToday) {
-          await api.put('/daily-logs/sleep', { hours: hoursNum });
-        } else {
-          await api.post('/daily-logs', { log_date: date, sleep_hours: hoursNum, water_glasses: undefined, mood_rating: undefined });
-        }
+        await api.put(`/daily-logs/sleep?log_date=${date}`, { hours: hoursNum });
         qc.invalidateQueries({ queryKey: ['dailyLog'] });
         toast.success('Sleep updated');
       } catch { toast.error('Failed to update sleep'); }
     }, 600);
-  }, [date, qc, isToday]);
+  }, [date, qc]);
 
-  const saveQuality = useCallback((q) => {
+  const saveQuality = useCallback(async (q) => {
     try {
-      if (isToday) {
-        api.put('/daily-logs/sleep', { hours: Number(hours) });
-      }
+      await api.put(`/daily-logs/sleep?log_date=${date}`, { quality: q });
       qc.invalidateQueries({ queryKey: ['dailyLog'] });
       toast.success('Sleep quality updated');
     } catch { toast.error('Failed to update sleep quality'); }
-  }, [hours, qc, isToday]);
+  }, [date, qc]);
 
   return (
     <div className="space-y-4">
@@ -55,7 +47,7 @@ export default function SleepTracker({ sleepHours = 0, sleepQuality = 0, date })
             max="24"
             value={hours || ''}
             placeholder="0"
-            onChange={(e) => { setHours(e.target.value); saveHours(e.target.value, quality); }}
+            onChange={(e) => { setHours(e.target.value); saveHours(e.target.value); }}
             className="w-16 text-center text-sm font-semibold text-espresso-800 bg-transparent outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
           />
           <span className="text-sm text-espresso-400 font-medium">hours</span>

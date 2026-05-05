@@ -12,16 +12,10 @@ const moods = [
 
 export default function MoodSelector({ mood = 0, date }) {
   const qc = useQueryClient();
-  const today = new Date().toISOString().split('T')[0];
-  const isToday = date === today;
 
   const select = async (value) => {
     try {
-      if (isToday) {
-        await api.put('/daily-logs/mood', { rating: value });
-      } else {
-        await api.post('/daily-logs', { log_date: date, mood_rating: value, water_glasses: undefined, sleep_hours: undefined });
-      }
+      await api.put(`/daily-logs/mood?log_date=${date}`, { rating: value });
       qc.invalidateQueries({ queryKey: ['dailyLog'] });
       toast.success('Mood updated');
     } catch { toast.error('Failed to update mood'); }

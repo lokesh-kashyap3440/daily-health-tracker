@@ -98,6 +98,7 @@ class LogService:
         log_date: date,
         water_glasses: Optional[int] = None,
         sleep_hours: Optional[float] = None,
+        sleep_quality: Optional[int] = None,
         mood_rating: Optional[int] = None,
     ) -> DailyLog:
         log = await self.get_or_create_log_for_date(user_id, log_date)
@@ -106,6 +107,8 @@ class LogService:
             log.water_glasses = water_glasses
         if sleep_hours is not None:
             log.sleep_hours = sleep_hours
+        if sleep_quality is not None:
+            log.sleep_quality = sleep_quality
         if mood_rating is not None:
             log.mood_rating = mood_rating
 

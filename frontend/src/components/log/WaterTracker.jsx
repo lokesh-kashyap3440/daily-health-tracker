@@ -5,17 +5,11 @@ import toast from 'react-hot-toast';
 
 export default function WaterTracker({ glasses = 0, date }) {
   const qc = useQueryClient();
-  const today = new Date().toISOString().split('T')[0];
-  const isToday = date === today;
 
   const toggle = async (idx) => {
     const newCount = idx + 1 === glasses ? glasses - 1 : idx + 1;
     try {
-      if (isToday) {
-        await api.put('/daily-logs/water', { glasses: newCount });
-      } else {
-        await api.post('/daily-logs', { log_date: date, water_glasses: newCount, sleep_hours: undefined, mood_rating: undefined });
-      }
+      await api.put(`/daily-logs/water?log_date=${date}`, { glasses: newCount });
       qc.invalidateQueries({ queryKey: ['dailyLog'] });
       toast.success(`Water updated to ${newCount} glasses`);
     } catch { toast.error('Failed to update water'); }
