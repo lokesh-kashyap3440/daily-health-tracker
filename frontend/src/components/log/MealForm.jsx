@@ -3,6 +3,7 @@ import Button from '../ui/Button';
 import Input from '../ui/Input';
 import { useAddMeal } from '../../hooks/useMeals';
 import api from '../../api/client';
+import toast from 'react-hot-toast';
 import { Sparkles } from 'lucide-react';
 
 export default function MealForm({ dailyLogId, onClose }) {
@@ -23,8 +24,9 @@ export default function MealForm({ dailyLogId, onClose }) {
       if (data.protein_g != null) setForm((f) => ({ ...f, protein_g: String(data.protein_g) }));
       if (data.carbs_g != null) setForm((f) => ({ ...f, carbs_g: String(data.carbs_g) }));
       if (data.fat_g != null) setForm((f) => ({ ...f, fat_g: String(data.fat_g) }));
-    } catch {
-      // silently fail — user can still enter manually
+    } catch (err) {
+      const msg = err?.response?.data?.detail || err?.message || 'Failed to estimate macros. Check your AI API key.';
+      toast.error(msg);
     }
     setEstimating(false);
   };

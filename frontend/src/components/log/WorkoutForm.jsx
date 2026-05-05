@@ -3,6 +3,7 @@ import Button from '../ui/Button';
 import Input from '../ui/Input';
 import { useAddWorkout } from '../../hooks/useWorkouts';
 import api from '../../api/client';
+import toast from 'react-hot-toast';
 import { Sparkles } from 'lucide-react';
 
 export default function WorkoutForm({ dailyLogId, onClose }) {
@@ -21,8 +22,9 @@ export default function WorkoutForm({ dailyLogId, onClose }) {
         intensity: form.intensity,
       });
       if (data.calories != null) setForm((f) => ({ ...f, calories_burned: String(data.calories) }));
-    } catch {
-      // silently fail
+    } catch (err) {
+      const msg = err?.response?.data?.detail || err?.message || 'Failed to estimate calories. Check your AI API key.';
+      toast.error(msg);
     }
     setEstimating(false);
   };

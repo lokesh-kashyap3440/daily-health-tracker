@@ -56,6 +56,11 @@ body {
   color: var(--color-espresso-800);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+#root {
+  overflow-x: hidden;
 }
 
 /* ── Typography ──────────────────────────────────────────────────────────── */

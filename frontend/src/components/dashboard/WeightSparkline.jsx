@@ -32,7 +32,7 @@ export default function WeightSparkline() {
         <Spinner size="sm" />
       ) : (
         <>
-          <div className="h-20 -mx-2">
+          <div className="h-20">
             <ResponsiveContainer width="100%" height="100%">
               <AreaChart data={weights}>
                 <defs>
