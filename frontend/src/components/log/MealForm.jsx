@@ -2,10 +2,32 @@ import { useState } from 'react';
 import Button from '../ui/Button';
 import Input from '../ui/Input';
 import { useAddMeal } from '../../hooks/useMeals';
+import api from '../../api/client';
+import { Sparkles } from 'lucide-react';
 
 export default function MealForm({ dailyLogId, onClose }) {
   const [form, setForm] = useState({ meal_type: 'breakfast', name: '', calories: '', protein_g: '', carbs_g: '', fat_g: '' });
+  const [estimating, setEstimating] = useState(false);
   const addMeal = useAddMeal();
+
+  const handleEstimate = async () => {
+    if (!form.name.trim()) return;
+    setEstimating(true);
+    try {
+      const { data } = await api.post('/ai/estimate', {
+        item_type: 'meal',
+        name: form.name,
+        meal_type: form.meal_type,
+      });
+      if (data.calories != null) setForm((f) => ({ ...f, calories: String(data.calories) }));
+      if (data.protein_g != null) setForm((f) => ({ ...f, protein_g: String(data.protein_g) }));
+      if (data.carbs_g != null) setForm((f) => ({ ...f, carbs_g: String(data.carbs_g) }));
+      if (data.fat_g != null) setForm((f) => ({ ...f, fat_g: String(data.fat_g) }));
+    } catch {
+      // silently fail — user can still enter manually
+    }
+    setEstimating(false);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -44,6 +66,15 @@ export default function MealForm({ dailyLogId, onClose }) {
         <Input type="number" placeholder="Carbs (g)" value={form.carbs_g} onChange={(e) => setForm({ ...form, carbs_g: e.target.value })} />
         <Input type="number" placeholder="Fat (g)" value={form.fat_g} onChange={(e) => setForm({ ...form, fat_g: e.target.value })} />
       </div>
+      <button
+        type="button"
+        onClick={handleEstimate}
+        disabled={estimating || !form.name.trim()}
+        className="w-full flex items-center justify-center gap-2 text-sm font-medium text-sage-600 bg-sage-50 hover:bg-sage-100 border border-sage-200 rounded-xl px-4 py-2.5 transition-all disabled:opacity-50 cursor-pointer"
+      >
+        <Sparkles size={16} className={estimating ? 'animate-spin' : ''} />
+        {estimating ? 'Estimating...' : 'AI Estimate — auto-fill macros'}
+      </button>
       <Button type="submit" className="w-full" disabled={addMeal.isPending || !dailyLogId} pulse={!addMeal.isPending && !!dailyLogId}>
         {addMeal.isPending ? 'Adding...' : 'Add Meal'}
       </Button>

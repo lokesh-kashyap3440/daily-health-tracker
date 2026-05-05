@@ -2,10 +2,30 @@ import { useState } from 'react';
 import Button from '../ui/Button';
 import Input from '../ui/Input';
 import { useAddWorkout } from '../../hooks/useWorkouts';
+import api from '../../api/client';
+import { Sparkles } from 'lucide-react';
 
 export default function WorkoutForm({ dailyLogId, onClose }) {
   const [form, setForm] = useState({ exercise_type: '', duration_min: '', intensity: 'moderate', calories_burned: '' });
+  const [estimating, setEstimating] = useState(false);
   const addWorkout = useAddWorkout();
+
+  const handleEstimate = async () => {
+    if (!form.exercise_type.trim() || !form.duration_min) return;
+    setEstimating(true);
+    try {
+      const { data } = await api.post('/ai/estimate', {
+        item_type: 'workout',
+        name: form.exercise_type,
+        duration_min: Number(form.duration_min),
+        intensity: form.intensity,
+      });
+      if (data.calories != null) setForm((f) => ({ ...f, calories_burned: String(data.calories) }));
+    } catch {
+      // silently fail
+    }
+    setEstimating(false);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -37,6 +57,15 @@ export default function WorkoutForm({ dailyLogId, onClose }) {
         </select>
       </div>
       <Input type="number" placeholder="Calories burned" value={form.calories_burned} onChange={(e) => setForm({ ...form, calories_burned: e.target.value })} />
+      <button
+        type="button"
+        onClick={handleEstimate}
+        disabled={estimating || !form.exercise_type.trim() || !form.duration_min}
+        className="w-full flex items-center justify-center gap-2 text-sm font-medium text-sage-600 bg-sage-50 hover:bg-sage-100 border border-sage-200 rounded-xl px-4 py-2.5 transition-all disabled:opacity-50 cursor-pointer"
+      >
+        <Sparkles size={16} className={estimating ? 'animate-spin' : ''} />
+        {estimating ? 'Estimating...' : 'AI Estimate — auto-fill calories'}
+      </button>
       <Button type="submit" className="w-full" disabled={addWorkout.isPending || !dailyLogId} pulse={!addWorkout.isPending && !!dailyLogId}>
         {addWorkout.isPending ? 'Adding...' : 'Add Workout'}
       </Button>

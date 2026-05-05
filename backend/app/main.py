@@ -8,6 +8,7 @@ from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import ValidationError
 
+from app.api.ai_estimate import router as ai_estimate_router
 from app.api.auth import router as auth_router
 from app.api.chatbot import router as chatbot_router
 from app.api.daily_logs import router as daily_logs_router
@@ -134,6 +135,7 @@ async def generic_exception_handler(request: Request, exc: Exception):
 
 # ── Routers ─────────────────────────────────────────────────────────
 
+app.include_router(ai_estimate_router, prefix="/api")
 app.include_router(auth_router, prefix="/api")
 app.include_router(users_router, prefix="/api")
 app.include_router(daily_logs_router, prefix="/api")

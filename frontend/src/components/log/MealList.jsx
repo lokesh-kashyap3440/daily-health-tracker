@@ -31,7 +31,7 @@ export default function MealList({ meals, onDelete }) {
                   <div key={meal.id} className="group flex items-center justify-between bg-white rounded-xl p-3 border border-cream-200 hover:border-sage-200 hover:shadow-sm transition-all duration-200">
                     <div className="min-w-0">
                       <p className="text-sm font-medium text-espresso-800 truncate">{meal.name}</p>
-                      <p className="text-xs text-espresso-400 mt-0.5">
+                      <p className="text-xs text-espresso-400 mt-0.5 truncate">
                         <span className="font-semibold text-amber-600">{meal.calories ?? '--'}</span> cal
                         <span className="mx-1.5 text-cream-300">|</span>
                         P:<span className="font-medium text-espresso-500">{meal.protein_g ?? '--'}g</span>
