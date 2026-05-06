@@ -1,0 +1,1471 @@
+{
+  "nodes": [
+    {
+      "id": "project_healthtracker",
+      "label": "Daily Health Tracker",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "dockercompose_yml",
+      "label": "Docker Compose Orchestration",
+      "file_type": "code",
+      "source_file": "docker-compose.yml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "postgresql_service",
+      "label": "PostgreSQL 16 Database",
+      "file_type": "code",
+      "source_file": "docker-compose.yml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "redis_service",
+      "label": "Redis 7 Cache",
+      "file_type": "code",
+      "source_file": "docker-compose.yml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "rabbitmq_service",
+      "label": "RabbitMQ Message Broker",
+      "file_type": "code",
+      "source_file": "docker-compose.yml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "backend_fastapi",
+      "label": "Backend FastAPI Service",
+      "file_type": "code",
+      "source_file": "docker-compose.yml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "suggestion_worker",
+      "label": "Suggestion Worker",
+      "file_type": "code",
+      "source_file": "docker-compose.yml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "frontend_nginx_spa",
+      "label": "Frontend Nginx SPA",
+      "file_type": "code",
+      "source_file": "docker-compose.yml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "health_network",
+      "label": "health-network Bridge",
+      "file_type": "code",
+      "source_file": "docker-compose.yml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "readme_documentation",
+      "label": "README Documentation",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "render_deployment",
+      "label": "Render Production Deployment",
+      "file_type": "code",
+      "source_file": "render.yaml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "render_postgres_db",
+      "label": "Render PostgreSQL Database (health-tracker-db)",
+      "file_type": "code",
+      "source_file": "render.yaml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "backend_requirements",
+      "label": "Backend Python Dependencies",
+      "file_type": "code",
+      "source_file": "backend/requirements.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "backend_static_production",
+      "label": "Backend Served Production HTML",
+      "file_type": "code",
+      "source_file": "backend/static/index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "frontend_dev_index",
+      "label": "Frontend Dev Entry HTML",
+      "file_type": "code",
+      "source_file": "frontend/index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "frontend_package_config",
+      "label": "Frontend Package Configuration",
+      "file_type": "code",
+      "source_file": "frontend/package.json",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "react_frontend_stack",
+      "label": "React + Vite + TailwindCSS Frontend Stack",
+      "file_type": "code",
+      "source_file": "frontend/package.json",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "playwright_auth_spec",
+      "label": "Playwright Auth E2E Spec",
+      "file_type": "code",
+      "source_file": "frontend/test-results/auth-Authentication-login--23dd6-ials-redirects-to-dashboard-chromium/error-context.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "playwright_chatbot_spec",
+      "label": "Playwright Chatbot E2E Spec",
+      "file_type": "code",
+      "source_file": "frontend/test-results/chatbot-Chatbot-chat-input-is-visible-and-enabled-chromium/error-context.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "test_failure_summary",
+      "label": "E2E Test Run Failure Summary",
+      "file_type": "document",
+      "source_file": "frontend/test-results/.last-run.json",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "jwt_auth_mechanism",
+      "label": "JWT Token Authentication",
+      "file_type": "code",
+      "source_file": "README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "deepseek_api",
+      "label": "DeepSeek AI API",
+      "file_type": "code",
+      "source_file": "README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "alembic_migrations",
+      "label": "Alembic Database Migrations",
+      "file_type": "code",
+      "source_file": "docker-compose.yml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "async_suggestion_pipeline",
+      "label": "Async Suggestion Generation Pipeline",
+      "file_type": "rationale",
+      "source_file": "docker-compose.yml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "nginx_reverse_proxy_arch",
+      "label": "Nginx Reverse Proxy Architecture",
+      "file_type": "rationale",
+      "source_file": "docker-compose.yml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "err_connection_refused",
+      "label": "ERR_CONNECTION_REFUSED on Port 1252",
+      "file_type": "rationale",
+      "source_file": "frontend/test-results/auth-Authentication-login--23dd6-ials-redirects-to-dashboard-chromium/error-context.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "dashboard_navigating_to_daily_log_page_works",
+      "label": "dashboard.spec.js \u00c2\u00bb Dashboard \u00c2\u00bb navigating to daily log page works",
+      "file_type": "document",
+      "source_file": "frontend/test-results/dashboard-Dashboard-navigating-to-daily-log-page-works-chromium/error-context.md",
+      "source_location": "e2e/dashboard.spec.js:42:3",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "dashboard_navigating_to_daily_log_page_works_retry1",
+      "label": "dashboard.spec.js \u00c2\u00bb Dashboard \u00c2\u00bb navigating to daily log page works (retry1)",
+      "file_type": "document",
+      "source_file": "frontend/test-results/dashboard-Dashboard-navigating-to-daily-log-page-works-chromium-retry1/error-context.md",
+      "source_location": "e2e/dashboard.spec.js:42:3",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "dashboard_navigating_to_metrics_page_works",
+      "label": "dashboard.spec.js \u00c2\u00bb Dashboard \u00c2\u00bb navigating to metrics page works",
+      "file_type": "document",
+      "source_file": "frontend/test-results/dashboard-Dashboard-navigating-to-metrics-page-works-chromium/error-context.md",
+      "source_location": "e2e/dashboard.spec.js:49:3",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "dashboard_navigating_to_metrics_page_works_retry1",
+      "label": "dashboard.spec.js \u00c2\u00bb Dashboard \u00c2\u00bb navigating to metrics page works (retry1)",
+      "file_type": "document",
+      "source_file": "frontend/test-results/dashboard-Dashboard-navigating-to-metrics-page-works-chromium-retry1/error-context.md",
+      "source_location": "e2e/dashboard.spec.js:49:3",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "err_connection_refused_login",
+      "label": "ERR_CONNECTION_REFUSED at /login",
+      "file_type": "rationale",
+      "source_file": "frontend/test-results/dashboard-Dashboard-navigating-to-daily-log-page-works-chromium/error-context.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "dashboard_spec_js",
+      "label": "dashboard.spec.js",
+      "file_type": "code",
+      "source_file": "e2e/dashboard.spec.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "missing_file_chatbot_shows_loading_state",
+      "label": "chatbot-Chatbot-shows-loading-state-while-waiting-for-response-chromium-retry1/error-context.md",
+      "file_type": "document",
+      "source_file": "frontend/test-results/chatbot-Chatbot-shows-loading-state-while-waiting-for-response-chromium-retry1/error-context.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "missing_file_daily_log_deleting_meal",
+      "label": "daily-log-Daily-Log-deleting-a-meal-works-chromium/error-context.md",
+      "file_type": "document",
+      "source_file": "frontend/test-results/daily-log-Daily-Log-deleting-a-meal-works-chromium/error-context.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "missing_file_daily_log_deleting_meal_retry1",
+      "label": "daily-log-Daily-Log-deleting-a-meal-works-chromium-retry1/error-context.md",
+      "file_type": "document",
+      "source_file": "frontend/test-results/daily-log-Daily-Log-deleting-a-meal-works-chromium-retry1/error-context.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "missing_file_daily_log_deleting_workout",
+      "label": "daily-log-Daily-Log-deleting-a-workout-works-chromium/error-context.md",
+      "file_type": "document",
+      "source_file": "frontend/test-results/daily-log-Daily-Log-deleting-a-workout-works-chromium/error-context.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "missing_file_daily_log_deleting_workout_retry1",
+      "label": "daily-log-Daily-Log-deleting-a-workout-works-chromium-retry1/error-context.md",
+      "file_type": "document",
+      "source_file": "frontend/test-results/daily-log-Daily-Log-deleting-a-workout-works-chromium-retry1/error-context.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "missing_file_daily_log_mobile_tab_nav",
+      "label": "daily-log-Daily-Log-mobile-tab-navigation-works-chromium/error-context.md",
+      "file_type": "document",
+      "source_file": "frontend/test-results/daily-log-Daily-Log-mobile-tab-navigation-works-chromium/error-context.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "missing_file_daily_log_mobile_tab_nav_retry1",
+      "label": "daily-log-Daily-Log-mobile-tab-navigation-works-chromium-retry1/error-context.md",
+      "file_type": "document",
+      "source_file": "frontend/test-results/daily-log-Daily-Log-mobile-tab-navigation-works-chromium-retry1/error-context.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "missing_file_daily_log_mood_submission",
+      "label": "daily-log-Daily-Log-mood-submission-works-via-emoji-buttons-chromium/error-context.md",
+      "file_type": "document",
+      "source_file": "frontend/test-results/daily-log-Daily-Log-mood-submission-works-via-emoji-buttons-chromium/error-context.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "missing_file_daily_log_mood_submission_retry1",
+      "label": "daily-log-Daily-Log-mood-submission-works-via-emoji-buttons-chromium-retry1/error-context.md",
+      "file_type": "document",
+      "source_file": "frontend/test-results/daily-log-Daily-Log-mood-submission-works-via-emoji-buttons-chromium-retry1/error-context.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "missing_file_daily_log_submitting_meal",
+      "label": "daily-log-Daily-Log-submitting-a-new-meal-shows-it-in-the-list-chromium/error-context.md",
+      "file_type": "document",
+      "source_file": "frontend/test-results/daily-log-Daily-Log-submitting-a-new-meal-shows-it-in-the-list-chromium/error-context.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "missing_file_daily_log_submitting_meal_retry1",
+      "label": "daily-log-Daily-Log-submitting-a-new-meal-shows-it-in-the-list-chromium-retry1/error-context.md",
+      "file_type": "document",
+      "source_file": "frontend/test-results/daily-log-Daily-Log-submitting-a-new-meal-shows-it-in-the-list-chromium-retry1/error-context.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "missing_file_daily_log_submitting_workout",
+      "label": "daily-log-Daily-Log-submitting-a-new-workout-shows-it-in-the-list-chromium/error-context.md",
+      "file_type": "document",
+      "source_file": "frontend/test-results/daily-log-Daily-Log-submitting-a-new-workout-shows-it-in-the-list-chromium/error-context.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "missing_file_daily_log_submitting_workout_retry1",
+      "label": "daily-log-Daily-Log-submitting-a-new-workout-shows-it-in-the-list-chromium-retry1/error-context.md",
+      "file_type": "document",
+      "source_file": "frontend/test-results/daily-log-Daily-Log-submitting-a-new-workout-shows-it-in-the-list-chromium-retry1/error-context.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "missing_file_daily_log_water_tracker",
+      "label": "daily-log-Daily-Log-water-tracker-can-increment-glasses-chromium/error-context.md",
+      "file_type": "document",
+      "source_file": "frontend/test-results/daily-log-Daily-Log-water-tracker-can-increment-glasses-chromium/error-context.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "missing_file_daily_log_water_tracker_retry1",
+      "label": "daily-log-Daily-Log-water-tracker-can-increment-glasses-chromium-retry1/error-context.md",
+      "file_type": "document",
+      "source_file": "frontend/test-results/daily-log-Daily-Log-water-tracker-can-increment-glasses-chromium-retry1/error-context.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "missing_file_metrics_weight_chart",
+      "label": "metrics-Metrics-weight-chart-renders-with-data-chromium/error-context.md",
+      "file_type": "document",
+      "source_file": "frontend/test-results/metrics-Metrics-weight-chart-renders-with-data-chromium/error-context.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "missing_file_metrics_weight_chart_retry1",
+      "label": "metrics-Metrics-weight-chart-renders-with-data-chromium-retry1/error-context.md",
+      "file_type": "document",
+      "source_file": "frontend/test-results/metrics-Metrics-weight-chart-renders-with-data-chromium-retry1/error-context.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "missing_file_profile_update_preferences",
+      "label": "profile-Profile-can-update-user-preferences-chromium/error-context.md",
+      "file_type": "document",
+      "source_file": "frontend/test-results/profile-Profile-can-update-user-preferences-chromium/error-context.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "icon_svg_pwa",
+      "label": "PWA Icon SVG",
+      "file_type": "image",
+      "source_file": "frontend/public/icons/icon.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "auth_login_redirect_screenshot",
+      "label": "Auth Login Redirect Test Failure Screenshot",
+      "file_type": "image",
+      "source_file": "frontend/test-results/auth-Authentication-login--23dd6-ials-redirects-to-dashboard-chromium/test-failed-1.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "auth_login_redirect_retry_screenshot",
+      "label": "Auth Login Redirect Retry Failure Screenshot",
+      "file_type": "image",
+      "source_file": "frontend/test-results/auth-Authentication-login--23dd6-ials-redirects-to-dashboard-chromium-retry1/test-failed-1.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "auth_login_page_render_screenshot",
+      "label": "Auth Login Page Render Test Failure Screenshot",
+      "file_type": "image",
+      "source_file": "frontend/test-results/auth-Authentication-login-page-renders-with-new-design-chromium/test-failed-1.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "auth_login_page_render_retry_screenshot",
+      "label": "Auth Login Page Render Retry Failure Screenshot",
+      "file_type": "image",
+      "source_file": "frontend/test-results/auth-Authentication-login-page-renders-with-new-design-chromium-retry1/test-failed-1.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "auth_register_page_render_screenshot",
+      "label": "Auth Register Page Render Test Failure Screenshot",
+      "file_type": "image",
+      "source_file": "frontend/test-results/auth-Authentication-register-page-renders-with-new-design-chromium/test-failed-1.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "auth_register_page_render_retry_screenshot",
+      "label": "Auth Register Page Render Retry Failure Screenshot",
+      "file_type": "image",
+      "source_file": "frontend/test-results/auth-Authentication-register-page-renders-with-new-design-chromium-retry1/test-failed-1.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "chatbot_chat_input_screenshot",
+      "label": "Chatbot Chat Input Test Failure Screenshot",
+      "file_type": "image",
+      "source_file": "frontend/test-results/chatbot-Chatbot-chat-input-is-visible-and-enabled-chromium/test-failed-1.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "chatbot_chat_input_retry_screenshot",
+      "label": "Chatbot Chat Input Retry Failure Screenshot",
+      "file_type": "image",
+      "source_file": "frontend/test-results/chatbot-Chatbot-chat-input-is-visible-and-enabled-chromium-retry1/test-failed-1.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "auth_error_context",
+      "label": "Auth Test Error Context",
+      "file_type": "document",
+      "source_file": "frontend/test-results/auth-Authentication-login-page-renders-with-new-design-chromium/error-context.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "chatbot_error_context",
+      "label": "Chatbot Test Error Context",
+      "file_type": "document",
+      "source_file": "frontend/test-results/chatbot-Chatbot-chat-input-is-visible-and-enabled-chromium/error-context.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "connection_refused_error",
+      "label": "Connection Refused Error (ERR_CONNECTION_REFUSED)",
+      "file_type": "rationale",
+      "source_file": "frontend/test-results/.last-run.json",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "auth_e2e_spec",
+      "label": "Authentication E2E Test Spec",
+      "file_type": "code",
+      "source_file": "frontend/e2e/auth.spec.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "chatbot_e2e_spec",
+      "label": "Chatbot E2E Test Spec",
+      "file_type": "code",
+      "source_file": "frontend/e2e/chatbot.spec.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "favicon_svg",
+      "label": "Favicon SVG",
+      "file_type": "image",
+      "source_file": "frontend/public/favicon.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "icons_svg",
+      "label": "Icons SVG Sprite",
+      "file_type": "image",
+      "source_file": "frontend/public/icons.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "dockercompose_yml",
+      "target": "postgresql_service",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docker-compose.yml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "dockercompose_yml",
+      "target": "redis_service",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docker-compose.yml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "dockercompose_yml",
+      "target": "rabbitmq_service",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docker-compose.yml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "dockercompose_yml",
+      "target": "backend_fastapi",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docker-compose.yml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "dockercompose_yml",
+      "target": "suggestion_worker",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docker-compose.yml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "dockercompose_yml",
+      "target": "frontend_nginx_spa",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docker-compose.yml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "dockercompose_yml",
+      "target": "health_network",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docker-compose.yml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "backend_fastapi",
+      "target": "postgresql_service",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docker-compose.yml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "backend_fastapi",
+      "target": "redis_service",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docker-compose.yml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "backend_fastapi",
+      "target": "rabbitmq_service",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docker-compose.yml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "suggestion_worker",
+      "target": "postgresql_service",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docker-compose.yml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "suggestion_worker",
+      "target": "redis_service",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docker-compose.yml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "suggestion_worker",
+      "target": "rabbitmq_service",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docker-compose.yml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_nginx_spa",
+      "target": "backend_fastapi",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docker-compose.yml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "readme_documentation",
+      "target": "project_healthtracker",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "readme_documentation",
+      "target": "dockercompose_yml",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "readme_documentation",
+      "target": "backend_fastapi",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "readme_documentation",
+      "target": "deepseek_api",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "readme_documentation",
+      "target": "jwt_auth_mechanism",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "render_deployment",
+      "target": "backend_fastapi",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "render.yaml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "render_deployment",
+      "target": "render_postgres_db",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "render.yaml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "render_deployment",
+      "target": "deepseek_api",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "render.yaml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "render_deployment",
+      "target": "jwt_auth_mechanism",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "render.yaml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "backend_requirements",
+      "target": "backend_fastapi",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/requirements.txt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "backend_fastapi",
+      "target": "alembic_migrations",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docker-compose.yml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "suggestion_worker",
+      "target": "deepseek_api",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docker-compose.yml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "backend_fastapi",
+      "target": "suggestion_worker",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docker-compose.yml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_nginx_spa",
+      "target": "nginx_reverse_proxy_arch",
+      "relation": "implements",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "docker-compose.yml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "backend_fastapi",
+      "target": "async_suggestion_pipeline",
+      "relation": "implements",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "docker-compose.yml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "suggestion_worker",
+      "target": "async_suggestion_pipeline",
+      "relation": "implements",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "docker-compose.yml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "rabbitmq_service",
+      "target": "async_suggestion_pipeline",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "docker-compose.yml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "playwright_auth_spec",
+      "target": "err_connection_refused",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/test-results/auth-Authentication-login--23dd6-ials-redirects-to-dashboard-chromium/error-context.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "playwright_chatbot_spec",
+      "target": "err_connection_refused",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/test-results/chatbot-Chatbot-chat-input-is-visible-and-enabled-chromium/error-context.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "test_failure_summary",
+      "target": "playwright_auth_spec",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/test-results/.last-run.json",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "test_failure_summary",
+      "target": "playwright_chatbot_spec",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/test-results/.last-run.json",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "backend_static_production",
+      "target": "backend_fastapi",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "backend/static/index.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_dev_index",
+      "target": "react_frontend_stack",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/index.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_package_config",
+      "target": "react_frontend_stack",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/package.json",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "react_frontend_stack",
+      "target": "frontend_nginx_spa",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "frontend/package.json",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "playwright_auth_spec",
+      "target": "frontend_nginx_spa",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "frontend/test-results/auth-Authentication-login--23dd6-ials-redirects-to-dashboard-chromium/error-context.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "playwright_chatbot_spec",
+      "target": "frontend_nginx_spa",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "frontend/test-results/chatbot-Chatbot-chat-input-is-visible-and-enabled-chromium/error-context.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "backend_fastapi",
+      "target": "jwt_auth_mechanism",
+      "relation": "implements",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "render_deployment",
+      "target": "alembic_migrations",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "render.yaml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "dashboard_navigating_to_daily_log_page_works",
+      "target": "err_connection_refused_login",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/test-results/dashboard-Dashboard-navigating-to-daily-log-page-works-chromium/error-context.md",
+      "source_location": "e2e/dashboard.spec.js:42:3",
+      "weight": 1.0
+    },
+    {
+      "source": "dashboard_navigating_to_daily_log_page_works_retry1",
+      "target": "err_connection_refused_login",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/test-results/dashboard-Dashboard-navigating-to-daily-log-page-works-chromium-retry1/error-context.md",
+      "source_location": "e2e/dashboard.spec.js:42:3",
+      "weight": 1.0
+    },
+    {
+      "source": "dashboard_navigating_to_metrics_page_works",
+      "target": "err_connection_refused_login",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/test-results/dashboard-Dashboard-navigating-to-metrics-page-works-chromium/error-context.md",
+      "source_location": "e2e/dashboard.spec.js:49:3",
+      "weight": 1.0
+    },
+    {
+      "source": "dashboard_navigating_to_metrics_page_works_retry1",
+      "target": "err_connection_refused_login",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/test-results/dashboard-Dashboard-navigating-to-metrics-page-works-chromium-retry1/error-context.md",
+      "source_location": "e2e/dashboard.spec.js:49:3",
+      "weight": 1.0
+    },
+    {
+      "source": "dashboard_navigating_to_daily_log_page_works",
+      "target": "dashboard_spec_js",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/test-results/dashboard-Dashboard-navigating-to-daily-log-page-works-chromium/error-context.md",
+      "source_location": "e2e/dashboard.spec.js:42:3",
+      "weight": 1.0
+    },
+    {
+      "source": "dashboard_navigating_to_daily_log_page_works_retry1",
+      "target": "dashboard_spec_js",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/test-results/dashboard-Dashboard-navigating-to-daily-log-page-works-chromium-retry1/error-context.md",
+      "source_location": "e2e/dashboard.spec.js:42:3",
+      "weight": 1.0
+    },
+    {
+      "source": "dashboard_navigating_to_metrics_page_works",
+      "target": "dashboard_spec_js",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/test-results/dashboard-Dashboard-navigating-to-metrics-page-works-chromium/error-context.md",
+      "source_location": "e2e/dashboard.spec.js:49:3",
+      "weight": 1.0
+    },
+    {
+      "source": "dashboard_navigating_to_metrics_page_works_retry1",
+      "target": "dashboard_spec_js",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/test-results/dashboard-Dashboard-navigating-to-metrics-page-works-chromium-retry1/error-context.md",
+      "source_location": "e2e/dashboard.spec.js:49:3",
+      "weight": 1.0
+    },
+    {
+      "source": "dashboard_navigating_to_daily_log_page_works",
+      "target": "dashboard_navigating_to_metrics_page_works",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "frontend/test-results/dashboard-Dashboard-navigating-to-daily-log-page-works-chromium/error-context.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "icon_svg_pwa",
+      "target": "health_tracker_app",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/public/icons/icon.svg",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "auth_login_redirect_screenshot",
+      "target": "connection_refused_error",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/test-results/auth-Authentication-login--23dd6-ials-redirects-to-dashboard-chromium/test-failed-1.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "auth_login_redirect_retry_screenshot",
+      "target": "connection_refused_error",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/test-results/auth-Authentication-login--23dd6-ials-redirects-to-dashboard-chromium-retry1/test-failed-1.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "auth_login_page_render_screenshot",
+      "target": "connection_refused_error",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/test-results/auth-Authentication-login-page-renders-with-new-design-chromium/test-failed-1.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "auth_login_page_render_retry_screenshot",
+      "target": "connection_refused_error",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/test-results/auth-Authentication-login-page-renders-with-new-design-chromium-retry1/test-failed-1.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "auth_register_page_render_screenshot",
+      "target": "connection_refused_error",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/test-results/auth-Authentication-register-page-renders-with-new-design-chromium/test-failed-1.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "auth_register_page_render_retry_screenshot",
+      "target": "connection_refused_error",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/test-results/auth-Authentication-register-page-renders-with-new-design-chromium-retry1/test-failed-1.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "chatbot_chat_input_screenshot",
+      "target": "connection_refused_error",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/test-results/chatbot-Chatbot-chat-input-is-visible-and-enabled-chromium/test-failed-1.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "chatbot_chat_input_retry_screenshot",
+      "target": "connection_refused_error",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/test-results/chatbot-Chatbot-chat-input-is-visible-and-enabled-chromium-retry1/test-failed-1.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "connection_refused_error",
+      "target": "auth_e2e_spec",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/test-results/auth-Authentication-login-page-renders-with-new-design-chromium/error-context.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "connection_refused_error",
+      "target": "chatbot_e2e_spec",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/test-results/chatbot-Chatbot-chat-input-is-visible-and-enabled-chromium/error-context.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "auth_error_context",
+      "target": "auth_e2e_spec",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/test-results/auth-Authentication-login-page-renders-with-new-design-chromium/error-context.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "chatbot_error_context",
+      "target": "chatbot_e2e_spec",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/test-results/chatbot-Chatbot-chat-input-is-visible-and-enabled-chromium/error-context.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "auth_login_page_render_screenshot",
+      "target": "auth_error_context",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/test-results/auth-Authentication-login-page-renders-with-new-design-chromium/test-failed-1.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "chatbot_chat_input_screenshot",
+      "target": "chatbot_error_context",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/test-results/chatbot-Chatbot-chat-input-is-visible-and-enabled-chromium/test-failed-1.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "favicon_svg",
+      "target": "icons_svg",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/public/favicon.svg",
+      "source_location": null,
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": [
+    {
+      "nodes": [
+        "backend_fastapi",
+        "rabbitmq_service",
+        "suggestion_worker",
+        "deepseek_api"
+      ],
+      "relation": "async_suggestion_pipeline",
+      "relation_detail": "Backend FastAPI dispatches tasks via RabbitMQ; Suggestion Worker consumes them and calls DeepSeek AI API asynchronously",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docker-compose.yml"
+    },
+    {
+      "nodes": [
+        "frontend_nginx_spa",
+        "backend_fastapi",
+        "postgresql_service",
+        "redis_service"
+      ],
+      "relation": "nginx_reverse_proxy_arch",
+      "relation_detail": "Nginx reverse proxies /api/* requests to Backend FastAPI, which reads/writes PostgreSQL and Redis; frontend static files served directly by Nginx",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docker-compose.yml"
+    },
+    {
+      "nodes": [
+        "playwright_auth_spec",
+        "playwright_chatbot_spec",
+        "err_connection_refused",
+        "test_failure_summary"
+      ],
+      "relation": "e2e_test_failure_cascade",
+      "relation_detail": "All Playwright E2E tests (auth and chatbot specs) fail with ERR_CONNECTION_REFUSED on port 1252 because the frontend Docker container is not running",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/test-results/.last-run.json"
+    },
+    {
+      "members": [
+        "dashboard_navigating_to_daily_log_page_works",
+        "dashboard_navigating_to_daily_log_page_works_retry1",
+        "dashboard_navigating_to_metrics_page_works",
+        "dashboard_navigating_to_metrics_page_works_retry1",
+        "err_connection_refused_login",
+        "dashboard_spec_js"
+      ],
+      "label": "Dashboard navigation tests fail with ERR_CONNECTION_REFUSED (server not running)",
+      "relation": "all_fail_due_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "frontend/test-results/dashboard-Dashboard-navigating-to-daily-log-page-works-chromium/error-context.md",
+      "weight": 1.0
+    }
+  ],
+  "input_tokens": 121697,
+  "output_tokens": 0
+}

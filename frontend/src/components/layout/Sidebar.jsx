@@ -1,6 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { LayoutDashboard, UtensilsCrossed, MessageCircle, BarChart3, User, Leaf, Sun, Moon } from 'lucide-react';
-import useThemeStore from '../../store/themeStore';
+import { LayoutDashboard, UtensilsCrossed, MessageCircle, BarChart3, User, Leaf } from 'lucide-react';
 
 const links = [
   { to: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
@@ -11,8 +10,6 @@ const links = [
 ];
 
 export default function Sidebar() {
-  const { theme, toggleTheme } = useThemeStore();
-
   return (
     <aside className="hidden lg:flex flex-col w-64 h-screen sticky top-0 border-r border-cream-300 bg-gradient-to-b from-cream-50 to-cream-100 dark:border-dark-700 dark:from-dark-900 dark:to-dark-950">
       {/* Brand - decorative top gradient bar */}
@@ -54,18 +51,9 @@ export default function Sidebar() {
 
       {/* Footer */}
       <div className="px-5 py-4 border-t border-cream-200 dark:border-dark-700">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-sage-400 animate-pulse" />
-            <p className="text-[11px] text-espresso-400 font-medium dark:text-dark-400">Wellness mode</p>
-          </div>
-          <button
-            onClick={toggleTheme}
-            className="p-2 rounded-xl hover:bg-cream-200/60 transition-colors cursor-pointer text-espresso-400 hover:text-espresso-600 dark:hover:bg-dark-800/60 dark:text-dark-400 dark:hover:text-cream-200"
-            title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-          >
-            {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
-          </button>
+        <div className="flex items-center gap-2">
+          <span className="w-1.5 h-1.5 rounded-full bg-sage-400 animate-pulse" />
+          <p className="text-[11px] text-espresso-400 font-medium dark:text-dark-400">Wellness mode</p>
         </div>
       </div>
     </aside>
