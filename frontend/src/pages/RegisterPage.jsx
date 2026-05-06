@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom';
 import { useRegister } from '../hooks/useAuth';
 import Button from '../components/ui/Button';
 import Input from '../components/ui/Input';
-import { Leaf, Sparkles } from 'lucide-react';
+import { Leaf, Sparkles, Sun, Moon } from 'lucide-react';
+import useThemeStore from '../store/themeStore';
 
 export default function RegisterPage() {
   const [form, setForm] = useState({ email: '', password: '', first_name: '', last_name: '' });
   const register = useRegister();
+  const { theme, toggleTheme } = useThemeStore();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,6 +22,15 @@ export default function RegisterPage() {
       <div className="absolute top-[-15%] left-[-10%] w-[45rem] h-[45rem] rounded-full bg-sage-200/20 blur-3xl pointer-events-none animate-blob dark:bg-sage-800/20" />
       <div className="absolute bottom-[-15%] right-[-10%] w-[40rem] h-[40rem] rounded-full bg-terracotta-200/15 blur-3xl pointer-events-none animate-blob dark:bg-terracotta-900/20" style={{ animationDelay: '3s' }} />
       <div className="absolute top-1/2 right-1/4 w-64 h-64 rounded-full bg-cream-300/30 blur-3xl pointer-events-none animate-float-slow dark:bg-dark-800/30" />
+
+      {/* Theme toggle */}
+      <button
+        onClick={toggleTheme}
+        className="fixed top-4 right-4 z-50 p-2.5 rounded-xl bg-white/80 backdrop-blur-sm border border-cream-200 shadow-sm transition-colors cursor-pointer text-espresso-400 hover:text-espresso-600 dark:bg-dark-800/80 dark:border-dark-700 dark:text-dark-400 dark:hover:text-cream-200"
+        title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+      >
+        {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+      </button>
 
       {/* Decorative floating leaves */}
       <div className="absolute top-20 right-10 text-sage-200/30 animate-float-slow pointer-events-none dark:text-sage-800/30">
