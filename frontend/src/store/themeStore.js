@@ -1,23 +1,31 @@
 import { create } from 'zustand';
 
 function getInitialTheme() {
-  const stored = localStorage.getItem('theme');
-  if (stored === 'dark' || stored === 'light') return stored;
-  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  try {
+    const stored = localStorage.getItem('theme');
+    if (stored === 'dark' || stored === 'light') return stored;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  } catch {
+    return 'light';
+  }
 }
 
 function applyTheme(theme) {
   const root = document.documentElement;
+  const body = document.body;
+  if (!root || !body) return;
+
   if (theme === 'dark') {
     root.classList.add('dark');
-    document.body.classList.add('dark');
+    body.classList.add('dark');
   } else {
     root.classList.remove('dark');
-    document.body.classList.remove('dark');
+    body.classList.remove('dark');
   }
+
   const meta = document.querySelector('meta[name="theme-color"]');
   if (meta) {
-    meta.content = theme === 'dark' ? '#121214' : '#4a6741';
+    meta.setAttribute('content', theme === 'dark' ? '#121214' : '#4a6741');
   }
 }
 
@@ -25,7 +33,11 @@ const useThemeStore = create((set, get) => ({
   theme: getInitialTheme(),
 
   setTheme: (theme) => {
-    localStorage.setItem('theme', theme);
+    try {
+      localStorage.setItem('theme', theme);
+    } catch {
+      // localStorage may be unavailable (private browsing, storage full)
+    }
     applyTheme(theme);
     set({ theme });
   },
@@ -36,18 +48,31 @@ const useThemeStore = create((set, get) => ({
   },
 
   initTheme: () => {
+    // Apply the initial theme (inline script already did this, but this is
+    // the React-side confirmation to handle any timing edge cases)
     const { theme } = get();
     applyTheme(theme);
 
-    const mq = window.matchMedia('(prefers-color-scheme: dark)');
-    mq.addEventListener('change', (e) => {
-      const stored = localStorage.getItem('theme');
-      if (!stored) {
-        const newTheme = e.matches ? 'dark' : 'light';
-        applyTheme(newTheme);
-        set({ theme: newTheme });
-      }
-    });
+    // Listen for OS-level theme changes (only when user hasn't set a preference)
+    try {
+      const mq = window.matchMedia('(prefers-color-scheme: dark)');
+      const handler = (e) => {
+        try {
+          const stored = localStorage.getItem('theme');
+          if (!stored) {
+            const newTheme = e.matches ? 'dark' : 'light';
+            applyTheme(newTheme);
+            set({ theme: newTheme });
+          }
+        } catch {
+          // ignore localStorage errors
+        }
+      };
+      mq.addEventListener('change', handler);
+      return () => mq.removeEventListener('change', handler);
+    } catch {
+      // matchMedia not available
+    }
   },
 }));
 
