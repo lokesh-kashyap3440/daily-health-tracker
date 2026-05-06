@@ -11,13 +11,11 @@ Handles:
 
 import fnmatch
 import json
-import sys
 import uuid
-from datetime import date, datetime, timedelta, timezone
+from datetime import date
 from typing import Any, AsyncGenerator, Optional
 from unittest.mock import AsyncMock, MagicMock
 
-import pytest
 import pytest_asyncio
 from httpx import ASGITransport, AsyncClient
 from sqlalchemy import String, Text, TypeDecorator
@@ -78,15 +76,12 @@ _pg.JSON = _JSON  # type: ignore[attr-defined]
 # =============================================================================
 
 import app.database  # noqa: E402
-from app.api.deps import get_current_user, get_db, get_redis_client  # noqa: E402
-from app.config import settings  # noqa: E402
+from app.api.deps import get_db, get_redis_client  # noqa: E402
 from app.core.security import create_access_token, hash_password  # noqa: E402
 from app.database import Base  # noqa: E402
 from app.main import app  # noqa: E402
-from app.models.chat import ChatMessage, ChatRole, ChatSession  # noqa: E402
 from app.models.daily_log import DailyLog  # noqa: E402
 from app.models.meal import Meal, MealType  # noqa: E402
-from app.models.suggestion import DailySuggestion  # noqa: E402
 from app.models.user import User, UserProfile  # noqa: E402
 from app.models.workout import Workout  # noqa: E402
 
