@@ -9,7 +9,6 @@ Covers:
 
 from unittest.mock import AsyncMock, patch
 
-import pytest
 from httpx import AsyncClient
 
 from app.services.chatbot_service import ChatbotService

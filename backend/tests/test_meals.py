@@ -9,7 +9,6 @@ Covers:
 
 from datetime import date, timedelta
 
-import pytest
 from httpx import AsyncClient
 
 MEALS_URL = "/api/meals"

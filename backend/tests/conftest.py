@@ -86,7 +86,7 @@ from app.main import app  # noqa: E402
 from app.models.chat import ChatMessage, ChatRole, ChatSession  # noqa: E402
 from app.models.daily_log import DailyLog  # noqa: E402
 from app.models.meal import Meal, MealType  # noqa: E402
-from app.models.suggestion import DailySuggestion, SuggestionCategory  # noqa: E402
+from app.models.suggestion import DailySuggestion  # noqa: E402
 from app.models.user import User, UserProfile  # noqa: E402
 from app.models.workout import Workout  # noqa: E402
 
