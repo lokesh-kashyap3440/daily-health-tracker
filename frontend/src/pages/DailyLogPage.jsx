@@ -112,15 +112,15 @@ export default function DailyLogPage() {
           {/* Meals Section */}
           <Card variant="warm" className="relative overflow-hidden">
             <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-amber-100/50 to-transparent rounded-bl-full pointer-events-none" />
-            <div className="flex items-center justify-between mb-4 relative">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4 relative">
               <div className="flex items-center gap-2">
                 <div className="p-2 rounded-xl bg-gradient-to-br from-amber-100 to-orange-100 shadow-sm">
                   <Utensils size={18} className="text-amber-600" />
                 </div>
                 <h3 className="font-display text-base font-semibold text-espresso-800">Meals</h3>
               </div>
-              <button onClick={() => setShowMeal(true)} className="flex items-center gap-1.5 text-sm font-medium text-sage-600 hover:text-sage-700 px-3 py-1.5 rounded-xl hover:bg-sage-50 transition-all cursor-pointer">
-                <Plus size={16} /> Add Meal
+              <button onClick={() => setShowMeal(true)} className="w-full sm:w-auto flex items-center justify-center gap-2 text-sm font-semibold text-white bg-sage-600 hover:bg-sage-700 px-5 py-3 sm:py-2.5 rounded-xl transition-all cursor-pointer shadow-sm active:scale-[0.98] min-h-[44px]">
+                <Plus size={18} /> Add Meal
               </button>
             </div>
             {mealsLoading ? (
@@ -135,15 +135,15 @@ export default function DailyLogPage() {
           {/* Workouts Section */}
           <Card variant="warm" className="relative overflow-hidden">
             <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-purple-100/50 to-transparent rounded-bl-full pointer-events-none" />
-            <div className="flex items-center justify-between mb-4 relative">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4 relative">
               <div className="flex items-center gap-2">
                 <div className="p-2 rounded-xl bg-gradient-to-br from-purple-100 to-violet-100 shadow-sm">
                   <Dumbbell size={18} className="text-purple-600" />
                 </div>
                 <h3 className="font-display text-base font-semibold text-espresso-800">Workouts</h3>
               </div>
-              <button onClick={() => setShowWorkout(true)} className="flex items-center gap-1.5 text-sm font-medium text-sage-600 hover:text-sage-700 px-3 py-1.5 rounded-xl hover:bg-sage-50 transition-all cursor-pointer">
-                <Plus size={16} /> Add Workout
+              <button onClick={() => setShowWorkout(true)} className="w-full sm:w-auto flex items-center justify-center gap-2 text-sm font-semibold text-white bg-sage-600 hover:bg-sage-700 px-5 py-3 sm:py-2.5 rounded-xl transition-all cursor-pointer shadow-sm active:scale-[0.98] min-h-[44px]">
+                <Plus size={18} /> Add Workout
               </button>
             </div>
             {workoutsLoading ? (

@@ -40,9 +40,23 @@
   --color-espresso-800: '#3D3228';
   --color-espresso-900: '#2A221B';
 
+  --color-dark-50: #f5f5f6;
+  --color-dark-100: #e6e6e7;
+  --color-dark-200: #cdcdd0;
+  --color-dark-300: #a9a9ae;
+  --color-dark-400: #848489;
+  --color-dark-500: #69696e;
+  --color-dark-600: #535357;
+  --color-dark-700: #434348;
+  --color-dark-800: #2e2e32;
+  --color-dark-900: #1e1e21;
+  --color-dark-950: #121214;
+
   --font-display: 'Fraunces', Georgia, serif;
   --font-body: 'DM Sans', system-ui, sans-serif;
 }
+
+@custom-variant dark (&:where(.dark, .dark *));
 
 /* ── Base Styles ─────────────────────────────────────────────────────────── */
 html {
@@ -57,6 +71,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+}
+
+body.dark {
+  background-color: var(--color-dark-950);
+  color: var(--color-cream-100);
 }
 
 #root {
@@ -74,6 +93,8 @@ h1, h2, h3, h4 {
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--color-cream-300); border-radius: 999px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--color-cream-400); }
+body.dark ::-webkit-scrollbar-thumb { background: var(--color-dark-700); }
+body.dark ::-webkit-scrollbar-thumb:hover { background: var(--color-dark-600); }
 
 /* ── Focus Rings ─────────────────────────────────────────────────────────── */
 *:focus-visible {
@@ -204,6 +225,9 @@ h1, h2, h3, h4 {
   animation: shimmer 1.5s ease-in-out infinite;
   border-radius: 0.75rem;
 }
+body.dark .skeleton {
+  background: linear-gradient(90deg, var(--color-dark-800) 25%, var(--color-dark-700) 50%, var(--color-dark-800) 75%);
+}
 
 /* ── Grain Texture Overlay ────────────────────────────────────────────────── */
 .grain-overlay::after {
@@ -214,6 +238,9 @@ h1, h2, h3, h4 {
   z-index: 9999;
   opacity: 0.015;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)'/%3E%3C/svg%3E");
+}
+body.dark .grain-overlay::after {
+  opacity: 0.04;
 }
 
 /* ── Card Hover Tilt ───────────────────────────────────────────────────────── */
@@ -235,6 +262,10 @@ h1, h2, h3, h4 {
   border: 1px solid var(--color-cream-200);
   border-radius: 16px;
   border-bottom-left-radius: 4px;
+}
+body.dark .typing-indicator {
+  background: var(--color-dark-800);
+  border-color: var(--color-dark-600);
 }
 .typing-indicator span {
   width: 8px;
@@ -277,6 +308,11 @@ h1, h2, h3, h4 {
   border-radius: 0 0 16px 0;
   border-bottom: 1px solid var(--color-cream-200);
   border-left: 1px solid var(--color-cream-200);
+}
+body.dark .chat-tail-bot::after {
+  background: var(--color-dark-800);
+  border-bottom: 1px solid var(--color-dark-600);
+  border-left: 1px solid var(--color-dark-600);
 }
 
 /* ── Glow Effects ──────────────────────────────────────────────────────────── */
