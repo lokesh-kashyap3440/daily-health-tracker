@@ -1,8 +1,15 @@
+import { useState } from 'react';
 import { useDailyLog } from '../hooks/useDailyLog';
 import SummaryCards from '../components/dashboard/SummaryCards';
 import DailySuggestion from '../components/dashboard/DailySuggestion';
 import QuickLog from '../components/dashboard/QuickLog';
 import WeightSparkline from '../components/dashboard/WeightSparkline';
+import MealForm from '../components/log/MealForm';
+import WorkoutForm from '../components/log/WorkoutForm';
+import WaterTracker from '../components/log/WaterTracker';
+import SleepTracker from '../components/log/SleepTracker';
+import MoodSelector from '../components/log/MoodSelector';
+import Modal from '../components/ui/Modal';
 import Spinner from '../components/ui/Spinner';
 import { Sparkles, Leaf } from 'lucide-react';
 
@@ -10,6 +17,10 @@ const today = new Date().toISOString().split('T')[0];
 
 export default function DashboardPage() {
   const { data: log, isLoading, isError, refetch } = useDailyLog(today);
+  const [activeModal, setActiveModal] = useState(null);
+
+  const dailyLogId = log?.id;
+  const closeModal = () => setActiveModal(null);
 
   if (isLoading) return <Spinner size="lg" label="Loading your wellness data..." />;
 
@@ -25,48 +36,35 @@ export default function DashboardPage() {
   }
 
   const formattedDate = new Date().toLocaleDateString('en-US', {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
+    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
   });
 
-  // Computed greeting
   const hour = new Date().getHours();
   const greeting = hour < 12 ? 'Good morning' : hour < 17 ? 'Good afternoon' : 'Good evening';
 
   return (
     <div className="space-y-6 sm:space-y-8">
-      {/* ── Hero Section ─────────────────────────────────────────────────── */}
+      {/* Hero Section */}
       <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-sage-700 via-sage-600 to-sage-800 p-6 sm:p-8 md:p-10">
-        {/* Decorative elements */}
         <div className="absolute -top-20 -right-20 w-60 h-60 rounded-full bg-sage-500/20 blur-3xl pointer-events-none animate-blob" />
         <div className="absolute -bottom-10 -left-10 w-40 h-40 rounded-full bg-terracotta-400/15 blur-3xl pointer-events-none animate-blob" style={{ animationDelay: '2s' }} />
         <div className="absolute top-1/2 right-1/4 w-20 h-20 rounded-full bg-white/5 blur-xl pointer-events-none" />
 
-        {/* Content */}
         <div className="relative z-10">
           <div className="flex items-center gap-2 mb-3">
             <span className="w-1.5 h-1.5 rounded-full bg-sage-300 animate-pulse" />
-            <p className="text-xs font-semibold text-sage-200 uppercase tracking-widest">
-              {formattedDate}
-            </p>
+            <p className="text-xs font-semibold text-sage-200 uppercase tracking-widest">{formattedDate}</p>
           </div>
 
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
             <div>
-              <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-semibold text-white leading-tight tracking-tight">
-                {greeting}
-              </h1>
+              <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-semibold text-white leading-tight tracking-tight">{greeting}</h1>
               <div className="flex items-center gap-2 mt-1">
                 <Leaf size={16} className="text-sage-300" />
-                <p className="text-sage-200 text-sm sm:text-base">
-                  Here's your wellness snapshot for today
-                </p>
+                <p className="text-sage-200 text-sm sm:text-base">Here's your wellness snapshot for today</p>
               </div>
             </div>
 
-            {/* Wellness score badge */}
             <div className="flex items-center gap-2.5 px-4 py-2.5 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/10">
               <Sparkles size={18} className="text-amber-300" />
               <div>
@@ -78,7 +76,6 @@ export default function DashboardPage() {
         </div>
       </div>
 
-      {/* ── Dashboard Content ──────────────────────────────────────────── */}
       <div className="animate-fade-in">
         <DailySuggestion />
       </div>
@@ -92,9 +89,37 @@ export default function DashboardPage() {
           <WeightSparkline />
         </div>
         <div className="animate-card-reveal stagger-3">
-          <QuickLog />
+          <QuickLog onAction={setActiveModal} />
         </div>
       </div>
+
+      {/* ── Quick Action Modals ──────────────────────────────────────── */}
+
+      <Modal isOpen={activeModal === 'meal'} onClose={closeModal} title="Add Meal">
+        <MealForm dailyLogId={dailyLogId} onClose={closeModal} />
+      </Modal>
+
+      <Modal isOpen={activeModal === 'workout'} onClose={closeModal} title="Add Workout">
+        <WorkoutForm dailyLogId={dailyLogId} onClose={closeModal} />
+      </Modal>
+
+      <Modal isOpen={activeModal === 'water'} onClose={closeModal} title="Log Water">
+        <div className="py-4">
+          <WaterTracker glasses={log?.water_glasses || 0} date={today} />
+        </div>
+      </Modal>
+
+      <Modal isOpen={activeModal === 'sleep'} onClose={closeModal} title="Log Sleep">
+        <div className="py-4">
+          <SleepTracker sleepHours={log?.sleep_hours || 0} sleepQuality={log?.sleep_quality || 0} date={today} />
+        </div>
+      </Modal>
+
+      <Modal isOpen={activeModal === 'mood'} onClose={closeModal} title="Rate Mood">
+        <div className="py-4">
+          <MoodSelector mood={log?.mood_rating} date={today} />
+        </div>
+      </Modal>
     </div>
   );
 }
