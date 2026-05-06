@@ -53,7 +53,7 @@ export default function GoalsForm() {
     } catch { toast.error('Failed to update'); }
   };
 
-  if (loading) return <Card><div className="flex items-center gap-2 mb-4"><div className="p-2 rounded-xl bg-gradient-to-br from-purple-100 to-violet-100 shadow-sm"><Target size={18} className="text-purple-600" /></div><h2 className="font-display text-base font-semibold text-espresso-800">Fitness Goals</h2></div><Spinner /></Card>;
+  if (loading) return <Card><div className="flex items-center gap-2 mb-4"><div className="p-2 rounded-xl bg-gradient-to-br from-purple-100 to-violet-100 shadow-sm"><Target size={18} className="text-purple-600" /></div><h2 className="font-display text-base font-semibold text-espresso-800 dark:text-cream-100">Fitness Goals</h2></div><Spinner /></Card>;
 
   return (
     <Card className="relative overflow-hidden">
@@ -62,18 +62,18 @@ export default function GoalsForm() {
         <div className="p-2 rounded-xl bg-gradient-to-br from-purple-100 to-violet-100 shadow-sm">
           <Target size={18} className="text-purple-600" />
         </div>
-        <h2 className="font-display text-base font-semibold text-espresso-800">Fitness Goals</h2>
+        <h2 className="font-display text-base font-semibold text-espresso-800 dark:text-cream-100">Fitness Goals</h2>
       </div>
       <div className="space-y-5 relative">
         <div>
-          <label className="text-sm font-medium text-espresso-600 mb-2.5 block">Goal</label>
+          <label className="text-sm font-medium text-espresso-600 mb-2.5 block dark:text-espresso-300">Goal</label>
           <div className="flex flex-wrap gap-2">
             {goals.map((g) => (
               <button key={g.value} onClick={() => setForm({ ...form, fitness_goal: g.value })}
                 className={`inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-sm font-medium cursor-pointer transition-all duration-200 ${
                   form.fitness_goal === g.value
-                    ? 'bg-sage-600 text-white shadow-md shadow-sage-200/50'
-                    : 'bg-cream-100 text-espresso-600 hover:bg-cream-200 border border-cream-200'
+                    ? 'bg-sage-600 text-white shadow-md shadow-sage-200/50 dark:bg-sage-500 dark:shadow-dark-950/30'
+                    : 'bg-cream-100 text-espresso-600 hover:bg-cream-200 border border-cream-200 dark:bg-dark-800 dark:text-dark-300 dark:hover:bg-dark-700 dark:border-dark-700'
                 }`}
               >
                 <span>{g.icon}</span>
@@ -83,14 +83,14 @@ export default function GoalsForm() {
           </div>
         </div>
         <div>
-          <label className="text-sm font-medium text-espresso-600 mb-2.5 block">Activity Level</label>
+          <label className="text-sm font-medium text-espresso-600 mb-2.5 block dark:text-espresso-300">Activity Level</label>
           <div className="flex flex-wrap gap-2">
             {levels.map((l) => (
               <button key={l.value} onClick={() => setForm({ ...form, activity_level: l.value })}
                 className={`inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-sm font-medium cursor-pointer transition-all duration-200 ${
                   form.activity_level === l.value
-                    ? 'bg-sage-600 text-white shadow-md shadow-sage-200/50'
-                    : 'bg-cream-100 text-espresso-600 hover:bg-cream-200 border border-cream-200'
+                    ? 'bg-sage-600 text-white shadow-md shadow-sage-200/50 dark:bg-sage-500 dark:shadow-dark-950/30'
+                    : 'bg-cream-100 text-espresso-600 hover:bg-cream-200 border border-cream-200 dark:bg-dark-800 dark:text-dark-300 dark:hover:bg-dark-700 dark:border-dark-700'
                 }`}
               >
                 <span>{l.icon}</span>

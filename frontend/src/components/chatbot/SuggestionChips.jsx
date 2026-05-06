@@ -16,7 +16,7 @@ export default function SuggestionChips({ onSelect }) {
         <button
           key={s.text}
           onClick={() => onSelect(s.text)}
-          className="group inline-flex items-center gap-1.5 px-3.5 py-2 bg-cream-50 hover:bg-sage-100 hover:text-sage-700 text-espresso-500 text-xs font-medium rounded-full border border-cream-200 hover:border-sage-300 transition-all duration-200 cursor-pointer hover:shadow-sm hover:-translate-y-0.5 active:scale-95"
+          className="group inline-flex items-center gap-1.5 px-3.5 py-2 bg-cream-50 hover:bg-sage-100 hover:text-sage-700 text-espresso-500 text-xs font-medium rounded-full border border-cream-200 hover:border-sage-300 transition-all duration-200 cursor-pointer hover:shadow-sm hover:-translate-y-0.5 active:scale-95 dark:bg-dark-800 dark:hover:bg-dark-700 dark:text-dark-300 dark:hover:text-sage-300 dark:border-dark-700 dark:hover:border-sage-600"
         >
           <span className="text-sm">{s.emoji}</span>
           <span>{s.text}</span>

@@ -7,7 +7,7 @@ import { Flame, Clock, Dumbbell } from 'lucide-react';
 export default function CalorieChart() {
   const { data, isLoading, isError } = useCalorieHistory('1m');
 
-  if (isLoading) return <Card><div className="flex items-center gap-2 mb-4"><div className="p-2 rounded-xl bg-gradient-to-br from-amber-100 to-orange-100 shadow-sm"><Flame size={18} className="text-amber-600" /></div><h2 className="font-display text-base font-semibold text-espresso-800">Calorie Balance</h2></div><Spinner /></Card>;
+  if (isLoading) return <Card><div className="flex items-center gap-2 mb-4"><div className="p-2 rounded-xl bg-gradient-to-br from-amber-100 to-orange-100 shadow-sm"><Flame size={18} className="text-amber-600" /></div><h2 className="font-display text-base font-semibold text-espresso-800 dark:text-cream-100">Calorie Balance</h2></div><Spinner /></Card>;
 
   if (isError || !data) {
     return (
@@ -16,7 +16,7 @@ export default function CalorieChart() {
           <div className="p-2 rounded-xl bg-gradient-to-br from-amber-100 to-orange-100 shadow-sm">
             <Flame size={18} className="text-amber-600" />
           </div>
-          <h2 className="font-display text-base font-semibold text-espresso-800">Calorie Balance</h2>
+          <h2 className="font-display text-base font-semibold text-espresso-800 dark:text-cream-100">Calorie Balance</h2>
         </div>
         <EmptyState title="No data yet" description="Log meals and workouts to see your calorie balance." />
       </Card>
@@ -35,18 +35,18 @@ export default function CalorieChart() {
         <div className="p-2 rounded-xl bg-gradient-to-br from-amber-100 to-orange-100 shadow-sm">
           <Flame size={18} className="text-amber-600" />
         </div>
-        <h2 className="font-display text-base font-semibold text-espresso-800">30-Day Summary</h2>
+        <h2 className="font-display text-base font-semibold text-espresso-800 dark:text-cream-100">30-Day Summary</h2>
       </div>
       <div className="space-y-4">
         {stats.map(({ label, value, unit, icon: Icon, color, bg }) => (
-          <div key={label} className="flex items-center gap-4 p-3 rounded-2xl bg-cream-50 hover:bg-cream-100 transition-colors">
+          <div key={label} className="flex items-center gap-4 p-3 rounded-2xl bg-cream-50 hover:bg-cream-100 transition-colors dark:bg-dark-800 dark:hover:bg-dark-700">
             <div className={`p-2.5 rounded-xl bg-gradient-to-br ${bg} shadow-sm`}>
               <Icon size={20} className={color} />
             </div>
             <div>
-              <p className="text-[10px] text-espresso-400 font-semibold uppercase tracking-wider">{label}</p>
-              <p className="font-display text-lg font-bold text-espresso-800">
-                {value} <span className="text-sm font-normal text-espresso-400">{unit}</span>
+              <p className="text-[10px] text-espresso-400 font-semibold uppercase tracking-wider dark:text-dark-400">{label}</p>
+              <p className="font-display text-lg font-bold text-espresso-800 dark:text-cream-100">
+                {value} <span className="text-sm font-normal text-espresso-400 dark:text-dark-400">{unit}</span>
               </p>
             </div>
           </div>

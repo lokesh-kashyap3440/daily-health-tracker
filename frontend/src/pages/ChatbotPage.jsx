@@ -59,22 +59,22 @@ export default function ChatbotPage() {
           <MessageCircle size={20} className="text-sage-600" />
         </div>
         <div>
-          <h1 className="font-display text-xl sm:text-2xl font-semibold text-espresso-800 tracking-tight">
+          <h1 className="font-display text-xl sm:text-2xl font-semibold text-espresso-800 tracking-tight dark:text-cream-100">
             AI Health Coach
           </h1>
-          <p className="text-xs sm:text-sm text-espresso-400">Get personalized wellness advice</p>
+          <p className="text-xs sm:text-sm text-espresso-400 dark:text-dark-400">Get personalized wellness advice</p>
         </div>
       </div>
 
       {/* Chat Container */}
-      <div className="flex flex-1 min-h-0 bg-white rounded-2xl sm:rounded-3xl shadow-sm border border-cream-200 overflow-hidden">
+      <div className="flex flex-1 min-h-0 bg-white rounded-2xl sm:rounded-3xl shadow-sm border border-cream-200 overflow-hidden dark:bg-dark-800 dark:border-dark-700">
         <ChatSidebar sessions={sessions} activeId={activeId} onSelect={handleSelectSession} onNew={handleNew} />
         <div className="flex-1 flex flex-col overflow-hidden">
           {/* Mobile new chat button */}
-          <div className="lg:hidden flex items-center justify-between p-3 border-b border-cream-200 bg-cream-50/50">
+          <div className="lg:hidden flex items-center justify-between p-3 border-b border-cream-200 bg-cream-50/50 dark:border-dark-700 dark:bg-dark-800/50">
             <button
               onClick={handleNew}
-              className="flex items-center gap-1.5 text-sm font-medium text-sage-600 hover:text-sage-700 px-3 py-1.5 rounded-xl hover:bg-sage-50 transition-all cursor-pointer"
+              className="flex items-center gap-1.5 text-sm font-medium text-sage-600 hover:text-sage-700 px-3 py-1.5 rounded-xl hover:bg-sage-50 transition-all cursor-pointer dark:text-sage-400 dark:hover:text-sage-300 dark:hover:bg-dark-700"
             >
               <Sparkles size={16} /> New Chat
             </button>

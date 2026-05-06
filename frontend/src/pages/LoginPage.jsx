@@ -15,17 +15,17 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-cream-100 via-cream-50 to-sage-50 px-4 relative overflow-hidden">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-cream-100 via-cream-50 to-sage-50 px-4 relative overflow-hidden dark:from-dark-950 dark:via-dark-900 dark:to-dark-950">
       {/* Animated background blobs */}
-      <div className="absolute top-[-15%] right-[-10%] w-[45rem] h-[45rem] rounded-full bg-sage-200/20 blur-3xl pointer-events-none animate-blob" />
-      <div className="absolute bottom-[-15%] left-[-10%] w-[40rem] h-[40rem] rounded-full bg-terracotta-200/15 blur-3xl pointer-events-none animate-blob" style={{ animationDelay: '3s' }} />
-      <div className="absolute top-1/3 left-1/4 w-64 h-64 rounded-full bg-cream-300/30 blur-3xl pointer-events-none animate-float-slow" />
+      <div className="absolute top-[-15%] right-[-10%] w-[45rem] h-[45rem] rounded-full bg-sage-200/20 blur-3xl pointer-events-none animate-blob dark:bg-sage-800/20" />
+      <div className="absolute bottom-[-15%] left-[-10%] w-[40rem] h-[40rem] rounded-full bg-terracotta-200/15 blur-3xl pointer-events-none animate-blob dark:bg-terracotta-900/20" style={{ animationDelay: '3s' }} />
+      <div className="absolute top-1/3 left-1/4 w-64 h-64 rounded-full bg-cream-300/30 blur-3xl pointer-events-none animate-float-slow dark:bg-dark-800/30" />
 
       {/* Decorative floating leaves */}
-      <div className="absolute top-20 left-10 text-sage-200/30 animate-float-slow pointer-events-none">
+      <div className="absolute top-20 left-10 text-sage-200/30 animate-float-slow pointer-events-none dark:text-sage-800/30">
         <Leaf size={48} />
       </div>
-      <div className="absolute bottom-20 right-10 text-sage-200/20 animate-float pointer-events-none" style={{ animationDelay: '2s' }}>
+      <div className="absolute bottom-20 right-10 text-sage-200/20 animate-float pointer-events-none dark:text-sage-800/20" style={{ animationDelay: '2s' }}>
         <Leaf size={36} />
       </div>
 
@@ -36,14 +36,14 @@ export default function LoginPage() {
             <Leaf size={34} className="text-white" />
             <div className="absolute inset-0 rounded-2xl bg-white/10 animate-pulse-glow" />
           </div>
-          <h1 className="font-display text-4xl font-semibold text-espresso-800 tracking-tight">
-            Health<span className="text-sage-600">Tracker</span>
+          <h1 className="font-display text-4xl font-semibold text-espresso-800 tracking-tight dark:text-cream-100">
+            Health<span className="text-sage-600 dark:text-sage-400">Tracker</span>
           </h1>
-          <p className="text-espresso-400 text-sm mt-2">Welcome back to your wellness journey</p>
+          <p className="text-espresso-400 text-sm mt-2 dark:text-dark-400">Welcome back to your wellness journey</p>
         </div>
 
         {/* Card */}
-        <div className="bg-white/80 backdrop-blur-xl rounded-3xl shadow-xl shadow-espresso-900/5 border border-cream-200 p-8 sm:p-10 relative">
+        <div className="bg-white/80 backdrop-blur-xl rounded-3xl shadow-xl shadow-espresso-900/5 border border-cream-200 p-8 sm:p-10 relative dark:bg-dark-800/80 dark:border-dark-700 dark:shadow-dark-950/40">
           {/* Decorative top gradient bar */}
           <div className="absolute top-0 left-8 right-8 h-1 bg-gradient-to-r from-sage-400 via-sage-500 to-terracotta-400 rounded-full" />
 
@@ -75,12 +75,12 @@ export default function LoginPage() {
             </Button>
           </form>
 
-          <div className="mt-6 pt-6 border-t border-cream-200">
-            <p className="text-center text-sm text-espresso-400">
+          <div className="mt-6 pt-6 border-t border-cream-200 dark:border-dark-700">
+            <p className="text-center text-sm text-espresso-400 dark:text-dark-400">
               Don't have an account?{' '}
               <Link
                 to="/register"
-                className="text-sage-600 font-semibold hover:text-sage-700 transition-colors"
+                className="text-sage-600 font-semibold hover:text-sage-700 transition-colors dark:text-sage-400 dark:hover:text-sage-300"
               >
                 Create one
               </Link>
@@ -89,7 +89,7 @@ export default function LoginPage() {
         </div>
 
         {/* Footer */}
-        <p className="text-center text-xs text-espresso-400 mt-8">
+        <p className="text-center text-xs text-espresso-400 mt-8 dark:text-dark-500">
           Your health data is encrypted and private
         </p>
       </div>

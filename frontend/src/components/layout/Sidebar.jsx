@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
-import { LayoutDashboard, UtensilsCrossed, MessageCircle, BarChart3, User, Leaf } from 'lucide-react';
+import { LayoutDashboard, UtensilsCrossed, MessageCircle, BarChart3, User, Leaf, Sun, Moon } from 'lucide-react';
+import useThemeStore from '../../store/themeStore';
 
 const links = [
   { to: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
@@ -10,21 +11,23 @@ const links = [
 ];
 
 export default function Sidebar() {
+  const { theme, toggleTheme } = useThemeStore();
+
   return (
-    <aside className="hidden lg:flex flex-col w-64 h-screen sticky top-0 border-r border-cream-300 bg-gradient-to-b from-cream-50 to-cream-100">
+    <aside className="hidden lg:flex flex-col w-64 h-screen sticky top-0 border-r border-cream-300 bg-gradient-to-b from-cream-50 to-cream-100 dark:border-dark-700 dark:from-dark-900 dark:to-dark-950">
       {/* Brand - decorative top gradient bar */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-sage-400 via-sage-500 to-terracotta-400" />
 
-      <div className="px-6 pt-7 pb-6 border-b border-cream-200 relative">
+      <div className="px-6 pt-7 pb-6 border-b border-cream-200 relative dark:border-dark-700">
         <div className="flex items-center gap-3">
           <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-sage-500 to-sage-700 flex items-center justify-center shadow-md shadow-sage-200/50">
             <Leaf size={24} className="text-white" />
           </div>
           <div>
-            <h1 className="font-display text-xl font-semibold text-espresso-800 leading-tight tracking-tight">
-              Health<span className="text-sage-600">Tracker</span>
+            <h1 className="font-display text-xl font-semibold text-espresso-800 leading-tight tracking-tight dark:text-cream-100">
+              Health<span className="text-sage-600 dark:text-sage-400">Tracker</span>
             </h1>
-            <p className="text-[10px] text-espresso-400 font-medium uppercase tracking-widest">Your wellness companion</p>
+            <p className="text-[10px] text-espresso-400 font-medium uppercase tracking-widest dark:text-dark-400">Your wellness companion</p>
           </div>
         </div>
       </div>
@@ -38,8 +41,8 @@ export default function Sidebar() {
             className={({ isActive }) =>
               `flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 relative ${
                 isActive
-                  ? 'bg-white text-sage-700 shadow-sm border border-cream-200 before:absolute before:left-0 before:top-2 before:bottom-2 before:w-1 before:bg-sage-500 before:rounded-full before:-ml-1'
-                  : 'text-espresso-500 hover:bg-cream-200/60 hover:text-espresso-700'
+                  ? 'bg-white text-sage-700 shadow-sm border border-cream-200 before:absolute before:left-0 before:top-2 before:bottom-2 before:w-1 before:bg-sage-500 before:rounded-full before:-ml-1 dark:bg-dark-800 dark:text-sage-300 dark:border-dark-700'
+                  : 'text-espresso-500 hover:bg-cream-200/60 hover:text-espresso-700 dark:text-dark-400 dark:hover:bg-dark-800/60 dark:hover:text-cream-200'
               }`
             }
           >
@@ -50,10 +53,19 @@ export default function Sidebar() {
       </nav>
 
       {/* Footer */}
-      <div className="px-5 py-4 border-t border-cream-200">
-        <div className="flex items-center justify-center gap-2">
-          <span className="w-1.5 h-1.5 rounded-full bg-sage-400 animate-pulse" />
-          <p className="text-[11px] text-espresso-400 font-medium">Wellness mode</p>
+      <div className="px-5 py-4 border-t border-cream-200 dark:border-dark-700">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-sage-400 animate-pulse" />
+            <p className="text-[11px] text-espresso-400 font-medium dark:text-dark-400">Wellness mode</p>
+          </div>
+          <button
+            onClick={toggleTheme}
+            className="p-2 rounded-xl hover:bg-cream-200/60 transition-colors cursor-pointer text-espresso-400 hover:text-espresso-600 dark:hover:bg-dark-800/60 dark:text-dark-400 dark:hover:text-cream-200"
+            title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+          >
+            {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
+          </button>
         </div>
       </div>
     </aside>

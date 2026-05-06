@@ -17,10 +17,10 @@ export default function ProfilePage() {
             <User size={20} className="text-sage-600" />
           </div>
           <div className="min-w-0">
-            <h1 className="font-display text-2xl sm:text-3xl font-semibold text-espresso-800 tracking-tight truncate">
+            <h1 className="font-display text-2xl sm:text-3xl font-semibold text-espresso-800 tracking-tight truncate dark:text-cream-100">
               Profile & Settings
             </h1>
-            <p className="text-sm text-espresso-400 mt-1">Manage your personal information</p>
+            <p className="text-sm text-espresso-400 mt-1 dark:text-dark-400">Manage your personal information</p>
           </div>
         </div>
         <Button

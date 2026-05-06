@@ -20,25 +20,25 @@ export default function MealList({ meals, onDelete }) {
           <div key={type}>
             <div className="flex items-center gap-2 mb-2">
               <span className="text-sm">{mealIcons[type]}</span>
-              <h3 className="text-xs font-semibold text-espresso-500 uppercase tracking-wider">{type}</h3>
+              <h3 className="text-xs font-semibold text-espresso-500 uppercase tracking-wider dark:text-dark-400">{type}</h3>
               {items?.length > 0 && (
-                <span className="text-[10px] font-medium text-espresso-400 bg-cream-200 px-1.5 py-0.5 rounded-full">{items.length}</span>
+                <span className="text-[10px] font-medium text-espresso-400 bg-cream-200 px-1.5 py-0.5 rounded-full dark:text-dark-300 dark:bg-dark-700">{items.length}</span>
               )}
             </div>
             {items?.length > 0 ? (
               <div className="space-y-1.5">
                 {items.map((meal) => (
-                  <div key={meal.id} className="group flex items-center justify-between bg-white rounded-xl p-3 border border-cream-200 hover:border-sage-200 hover:shadow-sm transition-all duration-200">
+                  <div key={meal.id} className="group flex items-center justify-between bg-white rounded-xl p-3 border border-cream-200 hover:border-sage-200 hover:shadow-sm transition-all duration-200 dark:bg-dark-800 dark:border-dark-700 dark:hover:border-sage-700">
                     <div className="min-w-0">
-                      <p className="text-sm font-medium text-espresso-800 truncate">{meal.name}</p>
-                      <p className="text-xs text-espresso-400 mt-0.5 truncate">
+                      <p className="text-sm font-medium text-espresso-800 truncate dark:text-cream-100">{meal.name}</p>
+                      <p className="text-xs text-espresso-400 mt-0.5 truncate dark:text-dark-400">
                         <span className="font-semibold text-amber-600">{meal.calories ?? '--'}</span> cal
                         <span className="mx-1.5 text-cream-300">|</span>
-                        P:<span className="font-medium text-espresso-500">{meal.protein_g ?? '--'}g</span>
+                        P:<span className="font-medium text-espresso-500 dark:text-dark-300">{meal.protein_g ?? '--'}g</span>
                         <span className="mx-1.5 text-cream-300">|</span>
-                        C:<span className="font-medium text-espresso-500">{meal.carbs_g ?? '--'}g</span>
+                        C:<span className="font-medium text-espresso-500 dark:text-dark-300">{meal.carbs_g ?? '--'}g</span>
                         <span className="mx-1.5 text-cream-300">|</span>
-                        F:<span className="font-medium text-espresso-500">{meal.fat_g ?? '--'}g</span>
+                        F:<span className="font-medium text-espresso-500 dark:text-dark-300">{meal.fat_g ?? '--'}g</span>
                       </p>
                     </div>
                     <button
@@ -51,7 +51,7 @@ export default function MealList({ meals, onDelete }) {
                 ))}
               </div>
             ) : (
-              <p className="text-sm text-espresso-400 italic py-2 px-1">No {type} logged</p>
+              <p className="text-sm text-espresso-400 italic py-2 px-1 dark:text-dark-400">No {type} logged</p>
             )}
           </div>
         );

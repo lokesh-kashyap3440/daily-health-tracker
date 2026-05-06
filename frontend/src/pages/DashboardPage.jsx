@@ -27,8 +27,8 @@ export default function DashboardPage() {
   if (isError) {
     return (
       <div className="text-center py-16">
-        <p className="text-slate-500 mb-4">Could not load your dashboard data.</p>
-        <button onClick={() => refetch()} className="px-4 py-2 bg-sage-600 text-white rounded-xl text-sm font-medium hover:bg-sage-700 transition cursor-pointer">
+        <p className="text-slate-500 mb-4 dark:text-dark-400">Could not load your dashboard data.</p>
+        <button onClick={() => refetch()} className="px-4 py-2 bg-sage-600 text-white rounded-xl text-sm font-medium hover:bg-sage-700 transition cursor-pointer dark:bg-sage-500 dark:hover:bg-sage-600">
           Retry
         </button>
       </div>

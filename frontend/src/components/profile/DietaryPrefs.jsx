@@ -41,7 +41,7 @@ export default function DietaryPrefs() {
     } catch { toast.error('Failed to update'); }
   };
 
-  if (loading) return <Card><div className="flex items-center gap-2 mb-4"><div className="p-2 rounded-xl bg-gradient-to-br from-amber-100 to-orange-100 shadow-sm"><UtensilsCrossed size={18} className="text-amber-600" /></div><h2 className="font-display text-base font-semibold text-espresso-800">Dietary Preferences</h2></div><Spinner /></Card>;
+  if (loading) return <Card><div className="flex items-center gap-2 mb-4"><div className="p-2 rounded-xl bg-gradient-to-br from-amber-100 to-orange-100 shadow-sm"><UtensilsCrossed size={18} className="text-amber-600" /></div><h2 className="font-display text-base font-semibold text-espresso-800 dark:text-cream-100">Dietary Preferences</h2></div><Spinner /></Card>;
 
   return (
     <Card className="relative overflow-hidden">
@@ -50,11 +50,11 @@ export default function DietaryPrefs() {
         <div className="p-2 rounded-xl bg-gradient-to-br from-amber-100 to-orange-100 shadow-sm">
           <UtensilsCrossed size={18} className="text-amber-600" />
         </div>
-        <h2 className="font-display text-base font-semibold text-espresso-800">Dietary Preferences</h2>
+        <h2 className="font-display text-base font-semibold text-espresso-800 dark:text-cream-100">Dietary Preferences</h2>
       </div>
       <div className="space-y-5 relative">
         <div>
-          <label className="text-sm font-medium text-espresso-600 mb-2.5 block">Diet Type</label>
+          <label className="text-sm font-medium text-espresso-600 mb-2.5 block dark:text-espresso-300">Diet Type</label>
           <div className="flex flex-wrap gap-2">
             {diets.map((d) => (
               <button
@@ -62,8 +62,8 @@ export default function DietaryPrefs() {
                 onClick={() => setPrefs({ ...prefs, dietary_preference: d.value })}
                 className={`inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-sm font-medium cursor-pointer transition-all duration-200 ${
                   prefs.dietary_preference === d.value
-                    ? 'bg-sage-600 text-white shadow-md shadow-sage-200/50'
-                    : 'bg-cream-100 text-espresso-600 hover:bg-cream-200 border border-cream-200'
+                    ? 'bg-sage-600 text-white shadow-md shadow-sage-200/50 dark:bg-sage-500 dark:shadow-dark-950/30'
+                    : 'bg-cream-100 text-espresso-600 hover:bg-cream-200 border border-cream-200 dark:bg-dark-800 dark:text-dark-300 dark:hover:bg-dark-700 dark:border-dark-700'
                 }`}
               >
                 <span>{d.emoji}</span>
@@ -73,7 +73,7 @@ export default function DietaryPrefs() {
           </div>
         </div>
         <div>
-          <label className="text-sm font-medium text-espresso-600 mb-2.5 block">Allergies</label>
+          <label className="text-sm font-medium text-espresso-600 mb-2.5 block dark:text-espresso-300">Allergies</label>
           <div className="flex flex-wrap gap-2">
             {allergyOptions.map((a) => (
               <button
@@ -81,8 +81,8 @@ export default function DietaryPrefs() {
                 onClick={() => toggleAllergy(a)}
                 className={`px-4 py-2 rounded-xl text-sm font-medium cursor-pointer transition-all duration-200 ${
                   prefs.allergies.includes(a)
-                    ? 'bg-terracotta-100 text-terracotta-700 ring-2 ring-terracotta-400 shadow-sm'
-                    : 'bg-cream-100 text-espresso-600 hover:bg-cream-200 border border-cream-200'
+                    ? 'bg-terracotta-100 text-terracotta-700 ring-2 ring-terracotta-400 shadow-sm dark:bg-terracotta-900 dark:text-terracotta-300 dark:ring-terracotta-600'
+                    : 'bg-cream-100 text-espresso-600 hover:bg-cream-200 border border-cream-200 dark:bg-dark-800 dark:text-dark-300 dark:hover:bg-dark-700 dark:border-dark-700'
                 }`}
               >
                 {a}

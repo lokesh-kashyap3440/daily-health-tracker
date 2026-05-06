@@ -367,3 +367,10 @@ body.dark .chat-tail-bot::after {
 .page-enter {
   animation: fade-in 0.3s ease-out, slide-up 0.4s ease-out;
 }
+
+/* ── Dark mode toast overrides ─────────────────────────────────── */
+body.dark [data-sonner-toaster] [data-styled] {
+  background: var(--color-dark-800) !important;
+  color: var(--color-cream-100) !important;
+  border-color: var(--color-dark-700) !important;
+}

@@ -36,7 +36,7 @@ export default function ProfileForm() {
     } catch { toast.error('Failed to update profile'); }
   };
 
-  if (loading) return <Card><div className="flex items-center gap-2 mb-4"><div className="p-2 rounded-xl bg-gradient-to-br from-sage-100 to-sage-200 shadow-sm"><User size={18} className="text-sage-600" /></div><h2 className="font-display text-base font-semibold text-espresso-800">Personal Info</h2></div><Spinner /></Card>;
+  if (loading) return <Card><div className="flex items-center gap-2 mb-4"><div className="p-2 rounded-xl bg-gradient-to-br from-sage-100 to-sage-200 shadow-sm"><User size={18} className="text-sage-600" /></div><h2 className="font-display text-base font-semibold text-espresso-800 dark:text-cream-100">Personal Info</h2></div><Spinner /></Card>;
 
   return (
     <Card className="relative overflow-hidden">
@@ -45,7 +45,7 @@ export default function ProfileForm() {
         <div className="p-2 rounded-xl bg-gradient-to-br from-sage-100 to-sage-200 shadow-sm">
           <User size={18} className="text-sage-600" />
         </div>
-        <h2 className="font-display text-base font-semibold text-espresso-800">Personal Info</h2>
+        <h2 className="font-display text-base font-semibold text-espresso-800 dark:text-cream-100">Personal Info</h2>
       </div>
       <form onSubmit={handleSubmit} className="space-y-4 relative">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

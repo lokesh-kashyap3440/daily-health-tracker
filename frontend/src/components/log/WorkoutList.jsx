@@ -5,12 +5,12 @@ const intensityColors = { low: 'slate', moderate: 'amber', high: 'red' };
 const intensityLabels = { low: 'Low', moderate: 'Med', high: 'High' };
 
 export default function WorkoutList({ workouts, onDelete }) {
-  if (!workouts?.length) return <p className="text-sm text-espresso-400 italic py-2">No workouts logged</p>;
+  if (!workouts?.length) return <p className="text-sm text-espresso-400 italic py-2 dark:text-dark-400">No workouts logged</p>;
 
   return (
     <div className="space-y-2">
       {workouts.map((w, i) => (
-        <div key={w.id} className="group flex items-center justify-between bg-white rounded-xl p-3 border border-cream-200 hover:border-sage-200 hover:shadow-sm transition-all duration-200 animate-card-reveal" style={{ animationDelay: `${i * 0.05}s` }}>
+        <div key={w.id} className="group flex items-center justify-between bg-white rounded-xl p-3 border border-cream-200 hover:border-sage-200 hover:shadow-sm transition-all duration-200 animate-card-reveal dark:bg-dark-800 dark:border-dark-700 dark:hover:border-sage-700" style={{ animationDelay: `${i * 0.05}s` }}>
           <div className="flex items-center gap-3 min-w-0">
             <div className={`p-2 rounded-lg ${
               w.intensity === 'high' ? 'bg-terracotta-100' :
@@ -25,11 +25,11 @@ export default function WorkoutList({ workouts, onDelete }) {
             </div>
             <div className="min-w-0">
               <div className="flex items-center gap-2">
-                <p className="text-sm font-medium text-espresso-800 truncate">{w.exercise_type}</p>
+                <p className="text-sm font-medium text-espresso-800 truncate dark:text-cream-100">{w.exercise_type}</p>
                 <Badge color={intensityColors[w.intensity] || 'slate'} size="sm">{intensityLabels[w.intensity] || w.intensity}</Badge>
               </div>
-              <p className="text-xs text-espresso-400 mt-0.5">
-                <span className="font-medium text-espresso-500">{w.duration_min}</span> min
+              <p className="text-xs text-espresso-400 mt-0.5 dark:text-dark-400">
+                <span className="font-medium text-espresso-500 dark:text-dark-300">{w.duration_min}</span> min
                 {w.calories_burned > 0 && (
                   <>
                     <span className="mx-1.5 text-cream-300">|</span>

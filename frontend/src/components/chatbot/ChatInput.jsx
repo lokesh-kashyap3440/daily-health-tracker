@@ -12,7 +12,7 @@ export default function ChatInput({ onSend, disabled }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="border-t border-cream-200 bg-white p-4 sm:p-5">
+    <form onSubmit={handleSubmit} className="border-t border-cream-200 bg-white p-4 sm:p-5 dark:border-dark-700 dark:bg-dark-800">
       <div className="flex gap-3 items-end max-w-4xl mx-auto">
         <div className="flex-1 relative">
           <input
@@ -20,9 +20,9 @@ export default function ChatInput({ onSend, disabled }) {
             onChange={(e) => setMsg(e.target.value)}
             placeholder="Ask about diet, workouts, nutrition..."
             disabled={disabled}
-            className="w-full border border-cream-300 rounded-2xl px-5 py-3.5 pr-12 text-sm bg-cream-50 text-espresso-800 placeholder:text-espresso-300 outline-none transition-all duration-200 focus:bg-white focus:border-sage-400 focus:ring-2 focus:ring-sage-400/30 focus:shadow-lg focus:shadow-sage-200/30"
+            className="w-full border border-cream-300 rounded-2xl px-5 py-3.5 pr-12 text-sm bg-cream-50 text-espresso-800 placeholder:text-espresso-300 outline-none transition-all duration-200 focus:bg-white focus:border-sage-400 focus:ring-2 focus:ring-sage-400/30 focus:shadow-lg focus:shadow-sage-200/30 dark:bg-dark-800 dark:border-dark-700 dark:text-cream-100 dark:placeholder:text-dark-400 dark:focus:bg-dark-800 dark:focus:border-sage-500 dark:focus:shadow-dark-950/30"
           />
-          <Sparkles size={16} className="absolute right-4 top-1/2 -translate-y-1/2 text-espresso-300 pointer-events-none" />
+          <Sparkles size={16} className="absolute right-4 top-1/2 -translate-y-1/2 text-espresso-300 pointer-events-none dark:text-dark-400" />
         </div>
         <button
           type="submit"

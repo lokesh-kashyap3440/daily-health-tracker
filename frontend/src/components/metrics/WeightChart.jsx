@@ -11,12 +11,12 @@ export default function WeightChart() {
   const [range, setRange] = useState('1M');
   const { data, isLoading, isError } = useWeightHistory(range.toLowerCase());
 
-  if (isLoading) return <Card><h2 className="font-display text-base font-semibold text-espresso-800 mb-4">Weight Trend</h2><Spinner /></Card>;
+  if (isLoading) return <Card><h2 className="font-display text-base font-semibold text-espresso-800 mb-4 dark:text-cream-100">Weight Trend</h2><Spinner /></Card>;
 
   if (isError || !data) {
     return (
       <Card>
-        <h2 className="font-display text-base font-semibold text-espresso-800 mb-4">Weight Trend</h2>
+        <h2 className="font-display text-base font-semibold text-espresso-800 mb-4 dark:text-cream-100">Weight Trend</h2>
         <EmptyState title="No data yet" description="Log your weight to see trends." />
       </Card>
     );
@@ -27,16 +27,16 @@ export default function WeightChart() {
   return (
     <Card hover>
       <div className="flex items-center justify-between mb-4">
-        <h2 className="font-display text-base font-semibold text-espresso-800">Weight Trend</h2>
-        <div className="flex gap-1 bg-cream-100 rounded-lg p-0.5">
+        <h2 className="font-display text-base font-semibold text-espresso-800 dark:text-cream-100">Weight Trend</h2>
+        <div className="flex gap-1 bg-cream-100 rounded-lg p-0.5 dark:bg-dark-800">
           {ranges.map((r) => (
             <button
               key={r}
               onClick={() => setRange(r)}
               className={`px-2.5 py-1 text-xs font-medium rounded-md transition-all cursor-pointer ${
                 r === range
-                  ? 'bg-white text-sage-700 shadow-sm'
-                  : 'text-espresso-400 hover:text-espresso-600'
+                  ? 'bg-white text-sage-700 shadow-sm dark:bg-dark-700 dark:text-sage-300'
+                  : 'text-espresso-400 hover:text-espresso-600 dark:text-dark-400 dark:hover:text-cream-200'
               }`}
             >
               {r}

@@ -7,9 +7,9 @@ export default function Spinner({ className = '', size = 'md', label = '' }) {
 
   return (
     <div className={`flex flex-col justify-center items-center py-8 gap-3 ${className}`}>
-      <div className={`${sizes[size]} border-sage-200 border-t-sage-600 rounded-full animate-spin`} />
+      <div className={`${sizes[size]} border-sage-200 border-t-sage-600 rounded-full animate-spin dark:border-dark-700 dark:border-t-sage-400`} />
       {label && (
-        <p className="text-xs text-espresso-400 font-medium animate-pulse">{label}</p>
+        <p className="text-xs text-espresso-400 font-medium animate-pulse dark:text-dark-400">{label}</p>
       )}
     </div>
   );

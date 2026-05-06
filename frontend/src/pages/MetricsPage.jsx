@@ -13,10 +13,10 @@ export default function MetricsPage() {
           <BarChart3 size={20} className="text-purple-600" />
         </div>
         <div>
-          <h1 className="font-display text-2xl sm:text-3xl font-semibold text-espresso-800 tracking-tight">
+          <h1 className="font-display text-2xl sm:text-3xl font-semibold text-espresso-800 tracking-tight dark:text-cream-100">
             Health Metrics
           </h1>
-          <p className="text-sm text-espresso-400 mt-1">Visualize your progress over time</p>
+          <p className="text-sm text-espresso-400 mt-1 dark:text-dark-400">Visualize your progress over time</p>
         </div>
       </div>
 

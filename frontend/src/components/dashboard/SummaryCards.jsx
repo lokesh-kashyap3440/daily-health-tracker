@@ -75,10 +75,10 @@ export default function SummaryCards({ summary }) {
               <Icon size={22} className={iconColor} />
             </div>
             <div className="min-w-0">
-              <p className="text-[10px] text-espresso-400 font-semibold uppercase tracking-wider">{label}</p>
-              <p className="text-xl sm:text-2xl font-bold text-espresso-800 font-display truncate">
+              <p className="text-[10px] text-espresso-400 font-semibold uppercase tracking-wider dark:text-dark-400">{label}</p>
+              <p className="text-xl sm:text-2xl font-bold text-espresso-800 font-display truncate dark:text-cream-100">
                 {value}
-                <span className="text-xs sm:text-sm font-normal text-espresso-400 ml-1">
+                <span className="text-xs sm:text-sm font-normal text-espresso-400 ml-1 dark:text-dark-400">
                   {goal ? `/${goal}` : ''} <span className="text-[10px]">{unit}</span>
                 </span>
               </p>
@@ -87,7 +87,7 @@ export default function SummaryCards({ summary }) {
 
           {/* Mini progress bar */}
           {goal && typeof value === 'number' && (
-            <div className="mt-3 h-1 bg-cream-200 rounded-full overflow-hidden relative z-10">
+            <div className="mt-3 h-1 bg-cream-200 rounded-full overflow-hidden relative z-10 dark:bg-dark-700">
               <div
                 className={`h-full rounded-full transition-all duration-500 ${
                   accent === 'amber' ? 'bg-amber-400' :

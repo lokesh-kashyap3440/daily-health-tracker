@@ -64,23 +64,23 @@ export default function DailyLogPage() {
             <h1 className="font-display text-2xl sm:text-3xl font-semibold text-espresso-800 tracking-tight">
               Daily Log
             </h1>
-            <p className="text-sm text-espresso-400 mt-1">Track meals, workouts, and wellness</p>
+            <p className="text-sm text-espresso-400 mt-1 dark:text-dark-400">Track meals, workouts, and wellness</p>
           </div>
         </div>
 
         {/* Date Navigator */}
-        <div className="inline-flex items-center gap-2 px-3 py-2 bg-white rounded-2xl border border-cream-200 shadow-sm self-start">
-          <button onClick={() => changeDay(-1)} className="p-1.5 hover:bg-cream-100 rounded-xl transition-colors cursor-pointer text-espresso-400 hover:text-espresso-600">
+        <div className="inline-flex items-center gap-2 px-3 py-2 bg-white rounded-2xl border border-cream-200 shadow-sm self-start dark:bg-dark-800 dark:border-dark-700">
+          <button onClick={() => changeDay(-1)} className="p-1.5 hover:bg-cream-100 rounded-xl transition-colors cursor-pointer text-espresso-400 hover:text-espresso-600 dark:hover:bg-dark-700 dark:text-dark-400 dark:hover:text-cream-200">
             <ChevronLeft size={18} />
           </button>
-          <span className="text-sm font-semibold text-espresso-700 min-w-[130px] text-center font-display">
+          <span className="text-sm font-semibold text-espresso-700 min-w-[130px] text-center font-display dark:text-cream-100">
             {date.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}
           </span>
-          <button onClick={() => changeDay(1)} className="p-1.5 hover:bg-cream-100 rounded-xl transition-colors cursor-pointer text-espresso-400 hover:text-espresso-600">
+          <button onClick={() => changeDay(1)} className="p-1.5 hover:bg-cream-100 rounded-xl transition-colors cursor-pointer text-espresso-400 hover:text-espresso-600 dark:hover:bg-dark-700 dark:text-dark-400 dark:hover:text-cream-200">
             <ChevronRight size={18} />
           </button>
           {!isToday && (
-            <button onClick={() => setDate(new Date())} className="ml-1 text-xs font-semibold text-sage-600 hover:text-sage-700 px-2.5 py-1 rounded-lg hover:bg-sage-50 transition-colors cursor-pointer">
+            <button onClick={() => setDate(new Date())} className="ml-1 text-xs font-semibold text-sage-600 hover:text-sage-700 px-2.5 py-1 rounded-lg hover:bg-sage-50 transition-colors cursor-pointer dark:text-sage-400 dark:hover:text-sage-300 dark:hover:bg-dark-700">
               Today
             </button>
           )}

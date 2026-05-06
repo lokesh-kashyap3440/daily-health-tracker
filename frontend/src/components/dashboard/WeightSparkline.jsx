@@ -17,10 +17,10 @@ export default function WeightSparkline() {
   return (
     <Card hover>
       <div className="flex items-center justify-between mb-3">
-        <h2 className="font-display text-base font-semibold text-espresso-800">Weight Trend</h2>
+        <h2 className="font-display text-base font-semibold text-espresso-800 dark:text-cream-100">Weight Trend</h2>
         {change && (
           <div className={`flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded-full ${
-            isDown ? 'bg-green-100 text-green-700' : isUp ? 'bg-terracotta-100 text-terracotta-700' : 'bg-cream-200 text-espresso-500'
+            isDown ? 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300' : isUp ? 'bg-terracotta-100 text-terracotta-700 dark:bg-terracotta-900 dark:text-terracotta-300' : 'bg-cream-200 text-espresso-500 dark:bg-dark-700 dark:text-dark-400'
           }`}>
             {isDown ? <TrendingDown size={14} /> : isUp ? <TrendingUp size={14} /> : <Minus size={14} />}
             {change > 0 ? '+' : ''}{change} kg
@@ -47,10 +47,10 @@ export default function WeightSparkline() {
             </ResponsiveContainer>
           </div>
           <div className="flex justify-between mt-2">
-            <span className="text-[11px] text-espresso-400 font-medium">Last 7 days</span>
+            <span className="text-[11px] text-espresso-400 font-medium dark:text-dark-400">Last 7 days</span>
             {latest && (
-              <span className="text-sm font-bold text-espresso-700 font-display">
-                {latest} <span className="text-xs font-normal text-espresso-400">kg</span>
+              <span className="text-sm font-bold text-espresso-700 font-display dark:text-cream-100">
+                {latest} <span className="text-xs font-normal text-espresso-400 dark:text-dark-400">kg</span>
               </span>
             )}
           </div>

@@ -32,13 +32,13 @@ export default function MoodSelector({ mood = 0, date }) {
             className={`flex flex-col items-center gap-1.5 p-3 sm:p-4 rounded-2xl cursor-pointer transition-all duration-200 snap-start min-w-[70px] sm:min-w-[80px] ${
               isActive
                 ? 'bg-gradient-to-b from-sage-100 to-sage-50 ring-2 ring-sage-400 shadow-md scale-105'
-                : 'bg-white/60 hover:bg-cream-100 border border-cream-200 hover:border-cream-300 hover:shadow-sm'
+                : 'bg-white/60 hover:bg-cream-100 border border-cream-200 hover:border-cream-300 hover:shadow-sm dark:bg-dark-800/60 dark:hover:bg-dark-700 dark:border-dark-700 dark:hover:border-dark-600'
             }`}
           >
             <span className={`text-3xl sm:text-4xl transition-transform duration-200 ${isActive ? 'scale-110' : ''}`}>
               {emoji}
             </span>
-            <span className={`text-xs font-medium ${isActive ? 'text-sage-700 font-semibold' : 'text-espresso-400'}`}>
+            <span className={`text-xs font-medium ${isActive ? 'text-sage-700 font-semibold dark:text-sage-300' : 'text-espresso-400 dark:text-dark-400'}`}>
               {label}
             </span>
           </button>

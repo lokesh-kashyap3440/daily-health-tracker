@@ -47,11 +47,11 @@ export default function WorkoutForm({ dailyLogId, onClose }) {
       <Input placeholder="Workout type (e.g. Running)" value={form.exercise_type} onChange={(e) => setForm({ ...form, exercise_type: e.target.value })} required />
       <Input type="number" placeholder="Duration (minutes)" value={form.duration_min} onChange={(e) => setForm({ ...form, duration_min: e.target.value })} required />
       <div>
-        <label className="block text-sm font-medium text-espresso-600 mb-1.5">Intensity</label>
+        <label className="block text-sm font-medium text-espresso-600 mb-1.5 dark:text-espresso-300">Intensity</label>
         <select
           value={form.intensity}
           onChange={(e) => setForm({ ...form, intensity: e.target.value })}
-          className="w-full border border-cream-300 rounded-xl px-4 py-2.5 text-sm bg-cream-50 text-espresso-800 outline-none transition-all duration-200 focus:bg-white focus:border-sage-400 focus:ring-2 focus:ring-sage-400/30"
+          className="w-full border border-cream-300 rounded-xl px-4 py-2.5 text-sm bg-cream-50 text-espresso-800 outline-none transition-all duration-200 focus:bg-white focus:border-sage-400 focus:ring-2 focus:ring-sage-400/30 dark:bg-dark-800 dark:border-dark-700 dark:text-cream-100 dark:focus:bg-dark-800 dark:focus:border-sage-500"
         >
           <option value="low">Low Intensity</option>
           <option value="moderate">Moderate Intensity</option>
@@ -63,7 +63,7 @@ export default function WorkoutForm({ dailyLogId, onClose }) {
         type="button"
         onClick={handleEstimate}
         disabled={estimating || !form.exercise_type.trim() || !form.duration_min}
-        className="w-full flex items-center justify-center gap-2 text-sm font-medium text-sage-600 bg-sage-50 hover:bg-sage-100 border border-sage-200 rounded-xl px-4 py-2.5 transition-all disabled:opacity-50 cursor-pointer"
+        className="w-full flex items-center justify-center gap-2 text-sm font-medium text-sage-600 bg-sage-50 hover:bg-sage-100 border border-sage-200 rounded-xl px-4 py-2.5 transition-all disabled:opacity-50 cursor-pointer dark:bg-dark-800 dark:text-sage-400 dark:hover:bg-dark-700 dark:border-dark-700"
       >
         <Sparkles size={16} className={estimating ? 'animate-spin' : ''} />
         {estimating ? 'Estimating...' : 'AI Estimate — auto-fill calories'}

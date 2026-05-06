@@ -32,24 +32,24 @@ export default function DailySuggestion() {
 
       <div className="flex items-start justify-between relative z-10">
         <div className="flex items-start gap-3">
-          <div className="p-2.5 rounded-xl bg-gradient-to-br from-sage-100 to-sage-200 shadow-sm flex-shrink-0 mt-0.5">
-            <Sparkles size={20} className="text-sage-600" />
+          <div className="p-2.5 rounded-xl bg-gradient-to-br from-sage-100 to-sage-200 shadow-sm flex-shrink-0 mt-0.5 dark:from-dark-700 dark:to-dark-800">
+            <Sparkles size={20} className="text-sage-600 dark:text-sage-400" />
           </div>
           <div>
-            <h2 className="font-display text-base font-semibold text-espresso-800 mb-1">
+            <h2 className="font-display text-base font-semibold text-espresso-800 mb-1 dark:text-cream-100">
               Daily Wellness Insight
             </h2>
             {isLoading ? (
               <Spinner size="sm" />
             ) : isError ? (
-              <div className="text-sm text-espresso-500">
+              <div className="text-sm text-espresso-500 dark:text-dark-400">
                 <p>Could not load your wellness insight.</p>
-                <button onClick={() => refetch()} className="text-sage-600 underline mt-1 hover:text-sage-700 cursor-pointer">
+                <button onClick={() => refetch()} className="text-sage-600 underline mt-1 hover:text-sage-700 cursor-pointer dark:text-sage-400 dark:hover:text-sage-300">
                   Try again
                 </button>
               </div>
             ) : (
-              <p className="text-sm text-espresso-600 leading-relaxed">
+              <p className="text-sm text-espresso-600 leading-relaxed dark:text-espresso-300">
                 {data?.content || 'Complete your profile to get personalized health suggestions tailored just for you.'}
               </p>
             )}
@@ -58,10 +58,10 @@ export default function DailySuggestion() {
         <button
           onClick={handleRefresh}
           disabled={refreshing}
-          className="p-2 rounded-xl hover:bg-sage-100/50 transition-colors cursor-pointer disabled:opacity-50 flex-shrink-0"
+          className="p-2 rounded-xl hover:bg-sage-100/50 transition-colors cursor-pointer disabled:opacity-50 flex-shrink-0 dark:hover:bg-dark-700/50"
           title="Get new suggestion"
         >
-          <RefreshCw size={18} className={`text-sage-500 ${refreshing ? 'animate-spin' : ''}`} />
+          <RefreshCw size={18} className={`text-sage-500 ${refreshing ? 'animate-spin' : ''} dark:text-sage-400`} />
         </button>
       </div>
     </Card>

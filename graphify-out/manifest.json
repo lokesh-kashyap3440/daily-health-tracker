@@ -216,20 +216,20 @@
     "hash": "d41d8cd98f00b204e9800998ecf8427e"
   },
   "C:\\claude\\health-tracker\\backend\\static\\registerSW.js": {
-    "mtime": 1777963963.8852773,
+    "mtime": 1778050753.6748037,
     "hash": "1872c500de691dce40960bb85481de07"
   },
   "C:\\claude\\health-tracker\\backend\\static\\sw.js": {
-    "mtime": 1777963963.8862844,
-    "hash": "7a850c65d0453b2bc04c61febcc9c392"
+    "mtime": 1778050753.6887715,
+    "hash": "85dcd57fca19eade35db58ef3939f378"
   },
-  "C:\\claude\\health-tracker\\backend\\static\\workbox-7a79b53c.js": {
-    "mtime": 1777963963.887293,
-    "hash": "5c666a1d0d35bf77a21b2882ec803e6e"
+  "C:\\claude\\health-tracker\\backend\\static\\workbox-e4022e15.js": {
+    "mtime": 1778050753.6887715,
+    "hash": "997816706b0de9c66e064967a19265ce"
   },
-  "C:\\claude\\health-tracker\\backend\\static\\assets\\index-fKGPiSTI.js": {
-    "mtime": 1777963963.8558412,
-    "hash": "08401b1edd5d251e1f6738fe85c6b5fd"
+  "C:\\claude\\health-tracker\\backend\\static\\assets\\index-C3XGzVc8.js": {
+    "mtime": 1778050753.6414616,
+    "hash": "4b05b1685e45eb1b2482258c382908f7"
   },
   "C:\\claude\\health-tracker\\backend\\tests\\conftest.py": {
     "mtime": 1777823602.7528994,
@@ -296,144 +296,144 @@
     "hash": "8b31fa0e8e10bba114c396eff44853ca"
   },
   "C:\\claude\\health-tracker\\frontend\\src\\main.jsx": {
-    "mtime": 1777964929.689871,
-    "hash": "65b8e47f337080e9c01326edd39d35de"
+    "mtime": 1778054161.8163738,
+    "hash": "790a6ba1804d391ab3f0d6eb9d009056"
   },
   "C:\\claude\\health-tracker\\frontend\\src\\api\\client.js": {
     "mtime": 1777822298.3778894,
     "hash": "4f2e897f7fb3cd3a8ba1dfb791d67f98"
   },
   "C:\\claude\\health-tracker\\frontend\\src\\components\\chatbot\\ChatInput.jsx": {
-    "mtime": 1777873855.3167043,
-    "hash": "1852c81fc3cf3e5a93aa025aab617314"
+    "mtime": 1778053861.1418197,
+    "hash": "e8273d03ff4d5b2f8c77af07ea8c104f"
   },
   "C:\\claude\\health-tracker\\frontend\\src\\components\\chatbot\\ChatSidebar.jsx": {
-    "mtime": 1777873886.7938454,
-    "hash": "346c8be8dd5cb34a31ac497bcd14b8ab"
+    "mtime": 1778053891.5613382,
+    "hash": "294de1d0cef4b47d7b4b2e8cd902cdfd"
   },
   "C:\\claude\\health-tracker\\frontend\\src\\components\\chatbot\\ChatWindow.jsx": {
-    "mtime": 1777873855.2908218,
-    "hash": "2a03bf8e8907b27324f9401d0e72eae4"
+    "mtime": 1778053860.4122024,
+    "hash": "b600e1cdf3cdabdb09e131c48e0c8f67"
   },
   "C:\\claude\\health-tracker\\frontend\\src\\components\\chatbot\\SuggestionChips.jsx": {
-    "mtime": 1777873886.8253827,
-    "hash": "7092bd9b9ceb64d645b4727a985c4e06"
+    "mtime": 1778053891.9513404,
+    "hash": "414fd005774360792e8308accd0374e7"
   },
   "C:\\claude\\health-tracker\\frontend\\src\\components\\dashboard\\DailySuggestion.jsx": {
-    "mtime": 1777876448.0140412,
-    "hash": "5098caa6151b158d448e18039e1f49df"
+    "mtime": 1778053570.6129308,
+    "hash": "623aa459de34ff08dcd80c0d0df41da6"
   },
   "C:\\claude\\health-tracker\\frontend\\src\\components\\dashboard\\QuickLog.jsx": {
-    "mtime": 1777873924.9905398,
-    "hash": "6d3062d548657a197f1d472f09140880"
+    "mtime": 1778053569.6980345,
+    "hash": "ee652cac35bb60bb7b68fbb327471508"
   },
   "C:\\claude\\health-tracker\\frontend\\src\\components\\dashboard\\SummaryCards.jsx": {
-    "mtime": 1777960639.3321192,
-    "hash": "129e8be425e2bfec77c75ff61ee3746c"
+    "mtime": 1778053570.1983678,
+    "hash": "21f058328e1ee56fa127a5b5259a5d0b"
   },
   "C:\\claude\\health-tracker\\frontend\\src\\components\\dashboard\\WeightSparkline.jsx": {
-    "mtime": 1777961286.3987312,
-    "hash": "ceb095e462c54e0b397baf8cd5d647fa"
+    "mtime": 1778053571.4315856,
+    "hash": "0194ec8998cbbf2c55e94dc9f2120bcb"
   },
   "C:\\claude\\health-tracker\\frontend\\src\\components\\layout\\AppShell.jsx": {
-    "mtime": 1777873886.8669193,
-    "hash": "2e4318dbb5ddb32f3bbe5d6d59fdcc60"
+    "mtime": 1778053631.2749329,
+    "hash": "4e8b1dfc7bc7e298df5dbf0ef1b688a0"
   },
   "C:\\claude\\health-tracker\\frontend\\src\\components\\layout\\MobileNav.jsx": {
-    "mtime": 1777873886.8413956,
-    "hash": "d5951a0214650ab910344f6518ac7319"
+    "mtime": 1778053641.6204486,
+    "hash": "038f76874fecb5adf3170bf9feb23090"
   },
   "C:\\claude\\health-tracker\\frontend\\src\\components\\layout\\Sidebar.jsx": {
-    "mtime": 1777873886.831949,
-    "hash": "fd8dd0ec368c56985c7b93130aed82b7"
+    "mtime": 1778053606.6737683,
+    "hash": "8ab7bd199ff9752b63323a4bb9ba650c"
   },
   "C:\\claude\\health-tracker\\frontend\\src\\components\\log\\MealForm.jsx": {
-    "mtime": 1777961376.4423254,
-    "hash": "a1e30ed1ec698de7c75dfd786c17243c"
+    "mtime": 1778054099.208423,
+    "hash": "b5a9e42ce8cdba8cde2f7c25900b0a0f"
   },
   "C:\\claude\\health-tracker\\frontend\\src\\components\\log\\MealList.jsx": {
-    "mtime": 1777960639.3805695,
-    "hash": "fabe1b665d49eb52ec3dfb8afb8dfc03"
+    "mtime": 1778054102.0587606,
+    "hash": "ec798400952aa5589478d14a677cb53b"
   },
   "C:\\claude\\health-tracker\\frontend\\src\\components\\log\\MoodSelector.jsx": {
-    "mtime": 1777963943.884209,
-    "hash": "1668353aec72bcd649aa2de639d300c7"
+    "mtime": 1778054131.1520913,
+    "hash": "4e1bf8d37f6985f0ce8106a45f9ec793"
   },
   "C:\\claude\\health-tracker\\frontend\\src\\components\\log\\SleepTracker.jsx": {
-    "mtime": 1777963922.9413004,
-    "hash": "35e42238b3d1f715b4e73bf06f961e20"
+    "mtime": 1778054133.1326334,
+    "hash": "bed857fd8870fea53b5bf595afd7154e"
   },
   "C:\\claude\\health-tracker\\frontend\\src\\components\\log\\WaterTracker.jsx": {
-    "mtime": 1777963863.3722253,
-    "hash": "7e216620ed0a03f9082b3eb3c2f28d11"
+    "mtime": 1778054133.9393902,
+    "hash": "9fe8c5a07bf0d485ad6bb539bb9c7ae9"
   },
   "C:\\claude\\health-tracker\\frontend\\src\\components\\log\\WorkoutForm.jsx": {
-    "mtime": 1777961384.1106873,
-    "hash": "cea348d5c4023d3be4de019ce6166183"
+    "mtime": 1778054100.0335925,
+    "hash": "4b51c0e01ac5d21e559bdd9c447f2708"
   },
   "C:\\claude\\health-tracker\\frontend\\src\\components\\log\\WorkoutList.jsx": {
-    "mtime": 1777874150.829788,
-    "hash": "b7d9434f561b95e052d6b1cf87701c88"
+    "mtime": 1778054103.7065384,
+    "hash": "eb25f98b2f434efc145e6f58491e1d2d"
   },
   "C:\\claude\\health-tracker\\frontend\\src\\components\\metrics\\CalorieChart.jsx": {
-    "mtime": 1777874230.1115358,
-    "hash": "06bff5ca337b0438e50f5591d596ba41"
+    "mtime": 1778053943.1780665,
+    "hash": "3ff488b3385b880a09fc0b2990b55d8d"
   },
   "C:\\claude\\health-tracker\\frontend\\src\\components\\metrics\\SleepChart.jsx": {
-    "mtime": 1777874230.1199915,
-    "hash": "4f5f0d842c3047657bfa529ae096f5b2"
+    "mtime": 1778054018.3347259,
+    "hash": "d2891d1bde3914533e44c7f970b3473e"
   },
   "C:\\claude\\health-tracker\\frontend\\src\\components\\metrics\\WeightChart.jsx": {
-    "mtime": 1777874230.105573,
-    "hash": "997aac278d3a654fd75d912af0e6c91f"
+    "mtime": 1778053968.6051986,
+    "hash": "b63a3023a500b63eec4b57ed0c785799"
   },
   "C:\\claude\\health-tracker\\frontend\\src\\components\\metrics\\WorkoutHeatmap.jsx": {
-    "mtime": 1777874230.1302757,
-    "hash": "80c2b8240693881334aecea3c218d3a1"
+    "mtime": 1778054015.467338,
+    "hash": "11634e080e15d2f1ee54eab09c1b19cf"
   },
   "C:\\claude\\health-tracker\\frontend\\src\\components\\profile\\DietaryPrefs.jsx": {
-    "mtime": 1777874278.1326084,
-    "hash": "5cacb7fdab922841de5b363f5d76bb89"
+    "mtime": 1778053823.3667676,
+    "hash": "14fedc07f228380306caf99129926a8c"
   },
   "C:\\claude\\health-tracker\\frontend\\src\\components\\profile\\GoalsForm.jsx": {
-    "mtime": 1777874278.148487,
-    "hash": "7c9074c494444cadeab95cba0db96be9"
+    "mtime": 1778053869.0076902,
+    "hash": "f4fb6b40f05a575bcb1c5ac376bc75c6"
   },
   "C:\\claude\\health-tracker\\frontend\\src\\components\\profile\\ProfileForm.jsx": {
-    "mtime": 1777874278.106009,
-    "hash": "f52de8b4b4a336d678fccc8582273059"
+    "mtime": 1778053820.9488547,
+    "hash": "6536884c03552b93c651b2de3896a41c"
   },
   "C:\\claude\\health-tracker\\frontend\\src\\components\\ui\\Badge.jsx": {
-    "mtime": 1777873822.3888986,
-    "hash": "8caacca2549a8b8193928946236324b8"
+    "mtime": 1778053522.5026965,
+    "hash": "992a5594f25efe344cb295d193484bb3"
   },
   "C:\\claude\\health-tracker\\frontend\\src\\components\\ui\\Button.jsx": {
-    "mtime": 1777873822.386478,
-    "hash": "619913d033491dbab421c71e8d8ab5d6"
+    "mtime": 1778053509.2275386,
+    "hash": "65c9c6291fe6cff8e55d4e9816e78d15"
   },
   "C:\\claude\\health-tracker\\frontend\\src\\components\\ui\\Card.jsx": {
-    "mtime": 1777873822.36427,
-    "hash": "8605b64452d47a015fdf22d88026c2c5"
+    "mtime": 1778053508.7861328,
+    "hash": "132dae01cbf3f0d10c08ef8ee8f09ef4"
   },
   "C:\\claude\\health-tracker\\frontend\\src\\components\\ui\\ChatBubble.jsx": {
-    "mtime": 1777873855.2529075,
-    "hash": "3166c9a76b2d99de22ce9880ccb0971a"
+    "mtime": 1778053511.5062523,
+    "hash": "bfba1a8e7b3e7b07b86773a4aa9033ea"
   },
   "C:\\claude\\health-tracker\\frontend\\src\\components\\ui\\EmptyState.jsx": {
-    "mtime": 1777873822.3956232,
-    "hash": "8f4a8d4050e283c8a1fa3e734b85a35f"
+    "mtime": 1778053510.7770922,
+    "hash": "b8d56161c61e0858d7ea0fc20fe2ef60"
   },
   "C:\\claude\\health-tracker\\frontend\\src\\components\\ui\\Input.jsx": {
-    "mtime": 1777873855.2740955,
-    "hash": "756909ba3f94b357b78c51b718e5ae6b"
+    "mtime": 1778053509.5949478,
+    "hash": "710f8d3d95f88f1b97c2750cffaacf6a"
   },
   "C:\\claude\\health-tracker\\frontend\\src\\components\\ui\\Modal.jsx": {
-    "mtime": 1777873855.2815695,
-    "hash": "1977dadc64f2c18f4b9ce6776dd29b73"
+    "mtime": 1778053510.0024357,
+    "hash": "0a7948989c34b3aa884dd99539743110"
   },
   "C:\\claude\\health-tracker\\frontend\\src\\components\\ui\\Spinner.jsx": {
-    "mtime": 1777873822.4028418,
-    "hash": "8ab4d8680c420ae2ce7132b1c9ac83e5"
+    "mtime": 1778053510.3806367,
+    "hash": "e1a6fcdd1f6dd40e11942e5131569326"
   },
   "C:\\claude\\health-tracker\\frontend\\src\\hooks\\useAuth.js": {
     "mtime": 1777874195.670224,
@@ -464,36 +464,36 @@
     "hash": "56a563ebe9886ba7b7f1d74dc0b4fc7f"
   },
   "C:\\claude\\health-tracker\\frontend\\src\\pages\\ChatbotPage.jsx": {
-    "mtime": 1777874188.7503078,
-    "hash": "87568589f94df7386a751eea0b3c6578"
+    "mtime": 1778053776.248396,
+    "hash": "ee50f1eaa3c942790b725502c9a1d236"
   },
   "C:\\claude\\health-tracker\\frontend\\src\\pages\\DailyLogPage.jsx": {
-    "mtime": 1778045176.1849945,
-    "hash": "74a70cb785f0f96bf02f749e7ecc3351"
+    "mtime": 1778054233.1193194,
+    "hash": "1ff5c4088bbcfb79b8dbd2ddb42f3533"
   },
   "C:\\claude\\health-tracker\\frontend\\src\\pages\\DashboardPage.jsx": {
-    "mtime": 1777874151.8619096,
-    "hash": "33b3d5d6a06306774ed78c2b90582356"
+    "mtime": 1778053687.0481899,
+    "hash": "bbd269e1571ec7e1c0fd765afe25373c"
   },
   "C:\\claude\\health-tracker\\frontend\\src\\pages\\LoginPage.jsx": {
-    "mtime": 1777873968.6780326,
-    "hash": "12ea020ceb989317a686866b7dd37ea1"
+    "mtime": 1778053716.9229305,
+    "hash": "c542347dbb1f18cbab7a5f280473a26e"
   },
   "C:\\claude\\health-tracker\\frontend\\src\\pages\\MetricsPage.jsx": {
-    "mtime": 1777874025.378199,
-    "hash": "4396274d0d401ce14383f9e5b405649f"
+    "mtime": 1778053775.1161435,
+    "hash": "034e9777c6dd0f182599f96b32bdf05e"
   },
   "C:\\claude\\health-tracker\\frontend\\src\\pages\\NotFoundPage.jsx": {
-    "mtime": 1777874289.5362618,
-    "hash": "b8afc5a70fe3aec91b7733d466b11f28"
+    "mtime": 1778053792.5925922,
+    "hash": "0f7fb0b39e469b315a3ebf7398fcda0d"
   },
   "C:\\claude\\health-tracker\\frontend\\src\\pages\\ProfilePage.jsx": {
-    "mtime": 1777874025.383747,
-    "hash": "48cbae2e37492d51ddc69d12e4e7bd94"
+    "mtime": 1778053774.751993,
+    "hash": "7d7f685fa8ca4ac188dcb1fc5049ee11"
   },
   "C:\\claude\\health-tracker\\frontend\\src\\pages\\RegisterPage.jsx": {
-    "mtime": 1777960639.4307108,
-    "hash": "444c78772102ff8ee1671b31d79106e9"
+    "mtime": 1778053744.9230554,
+    "hash": "a3b5377f0aba3ee17981a1667f9c8c10"
   },
   "C:\\claude\\health-tracker\\frontend\\src\\router\\AppRouter.jsx": {
     "mtime": 1777822424.69161,
@@ -552,8 +552,8 @@
     "hash": "b265573768b89ee922a24e2330bd9029"
   },
   "C:\\claude\\health-tracker\\backend\\static\\index.html": {
-    "mtime": 1777963963.882255,
-    "hash": "1462b78ed1a287de5b89944da567abeb"
+    "mtime": 1778050753.6567483,
+    "hash": "86389422e5a5348af111c799f5d412d4"
   },
   "C:\\claude\\health-tracker\\docs\\ARCHITECTURE.md": {
     "mtime": 1777821692.9427395,
@@ -692,15 +692,15 @@
     "hash": "0d29f1196903c9d2d74be23d5678030d"
   },
   "C:\\claude\\health-tracker\\backend\\static\\favicon.svg": {
-    "mtime": 1777963963.8558412,
+    "mtime": 1778050753.644811,
     "hash": "7e840862161341271697daa99a40d76b"
   },
   "C:\\claude\\health-tracker\\backend\\static\\icons.svg": {
-    "mtime": 1777963963.8719225,
+    "mtime": 1778050753.646473,
     "hash": "3b4fcfcf393eca4d264dca4a4663bc37"
   },
   "C:\\claude\\health-tracker\\backend\\static\\icons\\icon.svg": {
-    "mtime": 1777963963.8719225,
+    "mtime": 1778050753.646473,
     "hash": "21694da5720a8b8ba9c5bb9f40a764d5"
   },
   "C:\\claude\\health-tracker\\frontend\\public\\favicon.svg": {
