@@ -7,7 +7,6 @@ Covers:
 
 from unittest.mock import AsyncMock, patch
 
-import pytest
 from httpx import AsyncClient
 
 from app.models.suggestion import DailySuggestion, SuggestionCategory

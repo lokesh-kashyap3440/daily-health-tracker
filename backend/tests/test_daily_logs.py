@@ -11,7 +11,6 @@ Covers:
 
 from datetime import date, timedelta
 
-import pytest
 from httpx import AsyncClient
 
 DAILY_LOGS_URL = "/api/daily-logs"
