@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
-import { LayoutDashboard, UtensilsCrossed, MessageCircle, BarChart3, User } from 'lucide-react';
+import { LayoutDashboard, UtensilsCrossed, MessageCircle, BarChart3, User, Sun, Moon } from 'lucide-react';
+import useThemeStore from '../../store/themeStore';
 
 const links = [
   { to: '/dashboard', icon: LayoutDashboard, label: 'Home' },
@@ -46,6 +47,25 @@ export default function MobileNav() {
           </NavLink>
         ))}
       </div>
+
+      {/* Theme toggle */}
+      <MobileThemeToggle />
     </nav>
+  );
+}
+
+function MobileThemeToggle() {
+  const { theme, toggleTheme } = useThemeStore();
+  return (
+    <div className="absolute top-0 right-2 -translate-y-1/2">
+      <button
+        onClick={toggleTheme}
+        className="p-2 rounded-xl bg-cream-100/80 backdrop-blur-sm border border-cream-200 shadow-sm text-espresso-400 hover:text-espresso-600 hover:bg-cream-200 transition-all duration-200 cursor-pointer dark:bg-dark-800/80 dark:border-dark-700 dark:text-dark-400 dark:hover:text-cream-200 dark:hover:bg-dark-700"
+        title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+        aria-label="Toggle theme"
+      >
+        {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
+      </button>
+    </div>
   );
 }

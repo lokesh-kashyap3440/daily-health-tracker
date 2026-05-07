@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
-import { LayoutDashboard, UtensilsCrossed, MessageCircle, BarChart3, User, Leaf } from 'lucide-react';
+import { LayoutDashboard, UtensilsCrossed, MessageCircle, BarChart3, User, Leaf, Sun, Moon } from 'lucide-react';
+import useThemeStore from '../../store/themeStore';
 
 const links = [
   { to: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
@@ -51,11 +52,28 @@ export default function Sidebar() {
 
       {/* Footer */}
       <div className="px-5 py-4 border-t border-cream-200 dark:border-dark-700">
-        <div className="flex items-center gap-2">
-          <span className="w-1.5 h-1.5 rounded-full bg-sage-400 animate-pulse" />
-          <p className="text-[11px] text-espresso-400 font-medium dark:text-dark-400">Wellness mode</p>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-sage-400 animate-pulse" />
+            <p className="text-[11px] text-espresso-400 font-medium dark:text-dark-400">Wellness mode</p>
+          </div>
+          <ThemeToggleInline />
         </div>
       </div>
     </aside>
+  );
+}
+
+function ThemeToggleInline() {
+  const { theme, toggleTheme } = useThemeStore();
+  return (
+    <button
+      onClick={toggleTheme}
+      className="p-1.5 rounded-lg text-espresso-400 hover:text-espresso-600 hover:bg-cream-200/60 transition-all duration-200 cursor-pointer dark:text-dark-400 dark:hover:text-cream-200 dark:hover:bg-dark-800/60"
+      title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+      aria-label="Toggle theme"
+    >
+      {theme === 'dark' ? <Sun size={14} /> : <Moon size={14} />}
+    </button>
   );
 }
